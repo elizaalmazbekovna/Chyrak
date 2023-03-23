@@ -1,10 +1,13 @@
 {%load static%}
+{% load account %}
+{% load socialaccount %}
 
 {%block style%}
     <link rel="stylesheet" href="{%static 'registration/s.css'%}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {%endblock%}
 
 {% block content %}
@@ -19,12 +22,33 @@
     <form method="post">
         <h3>Кириңиз</h3>
         {% csrf_token %}
-        <label for="username">Колдонуучу атыңыз</label>
-        <div class="username">{{ form.username }}</div>
-        <label for="password">Сыр сөзүңүз</label>
-        <div class="password">{{ form.password }}</div>
-        <div><input class="button" value="Кирүү" type="submit"></div>
-        <div class="reg_user"><a href="{% url 'register_user' %}">Катталыңыз</a></div>
+        <div class="Login">
+            <div class="username" >{{ form.username }}</div>
+            <div class="password">{{ form.password }}</div>
+            <div ><input class="button" value="Кирүү" type="submit"></div>
+            <div class="reg_user"><a href="{% url 'register_user' %}">Катталыңыз</a></div>
+            <div class="icons">
+                <a href="{% provider_login_url 'facebook' %}" class="fa fa-facebook"></a>
+                <a href="{% provider_login_url 'google' %}" class="fa fa-google"></a>
+                <a href="#" class="fa fa-twitter"></a>
+            </div>
+
+        </div>
+
     </form>
+
+
+    <script>
+        var form_fieds = document.getElementsByTagName('input')
+        form_fieds[1].placeholder = 'Аты-жөнүңүз' ;
+        form_fieds[2].placeholder = 'Сыр сөзүңүз' ;
+
+
+
+        for( var field in form_fieds){
+            form_fieds[field].className += ' form-control'
+        }
+
+    </script>
 
 {% endblock %}
