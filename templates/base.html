@@ -1,0 +1,62 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barskoon</title>
+    <link rel="stylesheet" href="{%static 'base.css'%}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    {%block style%}
+    {%endblock%}
+</head>
+<body>
+    <div class="navigation-wrap start-header start-style">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav class="navbar navbar-expand-md navbar-light">
+						<a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/barskoon(2).svg' %}" alt=""></a>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto py-4 py-md-0">
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="{% url 'history_page' %}">Şehrin Tarihi</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="{% url 'news_page' %}">Haberler</a>
+								</li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="{% url 'employee_page' %}">Belediye Personeli</a>
+								</li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="{% url 'contacts_page' %}" role="tab">İletişim</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="{% url 'login' %}">Giriş Yap</a>
+								</li>
+							</ul>
+{#                            <div class="search_form">#}
+{#                                <form method="POST" action="/search/">#}
+{#                                    {%csrf_token%}#}
+{#                                    <input class='input' autocomplete="off" type="text" name="input" id="search-input" placeholder="Ara...">#}
+{#                                </form>#}
+{#                            </div>#}
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+    </div>
+    {%block content %}
+    {%endblock%}
+    <script>
+        const input = document.getElementById("search-input");
+        const searchBtn = document.getElementById("search-btn");
+        const expand = () => {
+          searchBtn.classList.toggle("close");
+          input.classList.toggle("square");
+        };
+        searchBtn.addEventListener("click", expand);
+    </script>
+</body>
+</html>

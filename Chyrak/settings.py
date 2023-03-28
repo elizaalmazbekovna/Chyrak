@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
+
     #'allauth.socialaccount.providers.twitter',
 
 ]
@@ -135,6 +136,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
+    '/var/www/static/',
 ]
 
 # Default primary key field type
@@ -143,46 +145,60 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTHENTICATION_BACKENDS = [
-
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
+    #'social.backends.twitter.TwitterOAuth',
 ]
 
 SITE_ID = 1
+
+# email
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_USERNAME_REQUIRED = False
+
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
 
         'APP': {
-            'client_id': '123',
-            'secret': '456',
+            'client_id': '559980417286-sq6dqavakgpa5ove53ejp6ufv7542e80.apps.googleusercontent.com',
+            'secret': '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',
             'key': ''
         }
     },
-'facebook':
-       {'METHOD': 'oauth2',
-        'SCOPE': ['email','public_profile', 'user_friends'],
-        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-        'FIELDS': [
-            'id',
-            'email',
-            'name',
-            'first_name',
-            'last_name',
-            'verified',
-            'locale',
-            'timezone',
-            'link',
-            'gender',
-            'updated_time'],
-        'EXCHANGE_TOKEN': True,
-        'LOCALE_FUNC': lambda request: 'kr_KR',
-        'VERIFIED_EMAIL': False,
-        'VERSION': 'v2.4'}
+    'facebook':
+           {'METHOD': 'oauth2',
+            'SCOPE': ['email','public_profile', 'user_friends'],
+            'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+            'FIELDS': [
+                'id',
+                'email',
+                'name',
+                'first_name',
+                'last_name',
+                'verified',
+                'locale',
+                'timezone',
+                'link',
+                'gender',
+                'updated_time'],
+            'EXCHANGE_TOKEN': True,
+            'LOCALE_FUNC': lambda request: 'kr_KR',
+            'VERIFIED_EMAIL': False,
+            'VERSION': 'v2.4'}
 }
 
+#Google
 #559980417286-sq6dqavakgpa5ove53ejp6ufv7542e80.apps.googleusercontent.com
 #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
 
+#Facebook
+#597464698959892
+
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
+
 

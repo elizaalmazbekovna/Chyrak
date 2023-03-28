@@ -5,5 +5,6 @@ from django.shortcuts import render
 
 
 
-def main(request):
-    return HttpResponse('<h1>HELLO WORLD</h1>')
+def index(request):
+
+    return render(request, 'main.html', locals())
