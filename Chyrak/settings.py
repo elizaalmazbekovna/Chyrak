@@ -41,14 +41,15 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'registration.apps.RegistrationConfig',
     'person.apps.PersonConfig',
+    'list_of_person.apps.ListOfPersonConfig',
+
+    #registration apps
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
-    'list_of_person.apps.ListOfPersonConfig',
-
     #'allauth.socialaccount.providers.twitter',
 
 ]
