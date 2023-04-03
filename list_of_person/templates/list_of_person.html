@@ -1,0 +1,29 @@
+{#{% load static %}#}
+{#{%block style%}#}
+{#    <link rel="stylesheet" href="{% static 'news.css' %}">#}
+{#{% endblock %}#}
+
+{% block content %}
+    <div class="header_emp">
+        <h5>HABERLER</h5>
+    </div>
+    <div class="news-class">
+        <section class="grid">
+            {% for victim in victims %}
+                <article class="grid-item">
+                    <div class="info">
+                        <a class="atuin-btn" href="#">
+                            <h2>{{ victim.first_name}}</h2>
+                            <h2>{{ victim.first_name}}</h2>
+                        </a>
+                        <div class="info-text">
+                            <p>
+                                {{ victim_article.content | truncatewords:40 }}
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            {% endfor %}
+        </section>
+    </div>
+{% endblock %}

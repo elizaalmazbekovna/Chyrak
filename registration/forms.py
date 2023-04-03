@@ -8,7 +8,7 @@ from django.forms.forms import Form
 
 class CustomUserCreationForm(UserCreationForm):
     username = forms.CharField(label='username', min_length=5, max_length=150)
-    email = forms.EmailField(label='email')
+    email = forms.EmailField(max_length=200, help_text='Required')
     password1 = forms.CharField(label='password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
 

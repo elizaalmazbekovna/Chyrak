@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
+    'list_of_person.apps.ListOfPersonConfig',
 
     #'allauth.socialaccount.providers.twitter',
 
@@ -150,15 +151,23 @@ AUTHENTICATION_BACKENDS = [
     #'social.backends.twitter.TwitterOAuth',
 ]
 
+# AUTH_USER_MODEL = 'accounts.User'
+
 SITE_ID = 1
 
 # email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'webmaster@localhost'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_USERNAME_REQUIRED = False
+# DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+# ACCOUNT_AUTHENTICATION_METHOD = 'email'
+# ACCOUNT_USERNAME_REQUIRED = False
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'afaricanistan@gmail.com'
+EMAIL_HOST_PASSWORD = 'afarica0101'
+EMAIL_PORT = 587
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -198,7 +207,7 @@ SOCIALACCOUNT_PROVIDERS = {
 #Facebook
 #597464698959892
 
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'login'
+# LOGIN_REDIRECT_URL = 'home'
+# LOGOUT_REDIRECT_URL = 'login'
 
 

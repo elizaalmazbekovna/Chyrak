@@ -1,2 +1,4 @@
 Django==4.1.7
 django-allauth
+Django-Verify-Email-2.0.3
+django-utils-six
