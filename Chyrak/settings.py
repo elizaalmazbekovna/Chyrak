@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'registration.apps.RegistrationConfig',
     'person.apps.PersonConfig',
+    'search.apps.SearchConfig',
     'list_of_person.apps.ListOfPersonConfig',
 
     #registration apps
@@ -62,7 +63,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
 ]
 
 ROOT_URLCONF = 'Chyrak.urls'

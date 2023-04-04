@@ -1,12 +1,11 @@
-{% extends 'base.html' %}
+{%extends 'base.html'%}
 {% block content %}
     <div class="container d-flex justify-content-center flex-column align-items-center">
         <div class="d-flex justify-content-center flex-row mt-3 align-items-center">
             <button class="border-0 bg-white">
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="36" fill="currentColor"
                     class="bi bi-filter-left me-3" viewBox="0 0 16 16">
-                    <path
-                        d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                    <path d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
                 </svg>
             </button>
             <form method="GET" action="{% url 'search' %}"class=" " style="width: 30vw;">
@@ -14,13 +13,13 @@
             </form>
         </div>
     </div>
+    {% if results %}
     <div class="container d-flex justify-content-center flex-column align-items-center">
-    {% for victim_article in victim_articles %}
+        {% for obj in results %}
         <div class="card border-0 mt-3 " style="width: 75%;">
             <div class="card-body">
                 <a href="{% url "person_page" %}" class="card-title fs-2 text-decoration-none" style="color: #611902;">
-                    {{ victim_article.first_name }}
-                    {{ victim_article.last_name }}
+                {{ obj.first_name }} {{ obj.last_name }}
                 </a>
                 <p class="card-text fs-6" style="
                 display: -webkit-box;
@@ -28,39 +27,23 @@
                 -webkit-box-orient: vertical;
                 overflow: hidden;
                 text-overflow: ellipsis;">
-                    {{ victim_article.content}}
+                    {{ obj.content }}
                 </p>
             </div>
         </div>
-    {% endfor %}
+        {% endfor %}
     </div>
+    {% else %}
+        <p>Жыйынтык табылган жок</p>
+    {% endif %}
 
-    <nav aria-label="Page navigation example" class="d-flex justify-content-center">
-
-        <ul>
-{% for item in page_obj %}
-    <li>{{ item }}</li>
-{% endfor %}
-</ul>
-
-<div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
-
-        <span class="current-page">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
-
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
-</div>
-
-    </nav>
-
+{#    <nav aria-label="Page navigation example" class="d-flex justify-content-center">#}
+{#        <ul class="pagination">#}
+{#            <li class="page-item"><a class="page-link" href="page_1.html">Previous</a></li>#}
+{#            <li class="page-item"><a class="page-link" href="page_1.html">1</a></li>#}
+{#            <li class="page-item"><a class="page-link" href="page_1.html">2</a></li>#}
+{#            <li class="page-item"><a class="page-link" href="page_1.html">3</a></li>#}
+{#            <li class="page-item"><a class="page-link" href="page_1.html">Next</a></li>#}
+{#        </ul>#}
+{#    </nav>#}
 {% endblock %}

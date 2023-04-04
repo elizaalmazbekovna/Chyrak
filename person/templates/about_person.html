@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{%block content%}
+        {% for victim in victims %}
+            <div class="wrapper ad">
+                <img src="{{victim.photo}}" alt="">
+            </div>
+            <div class="header_empl">
+                <h5>{{ victim.first_name }} {{ victim.last_name }}</h5>
+            </div>
+            <div class = "little_info">
+                <h3> ТУУЛГАН ЖЫЛЫ: {{ victim.date_of_birth }} </h3>
+                <h3> ӨЛГӨН КҮНҮ: {{ victim.date_of_death }} </h3>
+                <h3> ТУУЛГАН ЖЕРИ: {{ victim.place_of_birth }} </h3>
+                <h3> ӨЛГӨН ЖЕРИ: {{ victim.place_of_death}} </h3>
+                <h3> ИШМЕРДИГИ:  {{ victim.occupation }}</h3>
+                <h3> КОЮЛГАН АЙЫП: {{ victim.blame }} </h3>
+                <h3> АКТАЛГАНДЫГЫ: {{ victim.rehabilitated }} </h3>
+                <h3> ЖУБАЙЫ:  {{ victim.bedfellow }}</h3>
+                <h3> БАЛДАРЫ: {{ victim.children }} </h3>
+
+            </div>
+
+        {% endfor %}
+        {% for victim in victims %}
+                <div class="news_text">
+                    <p style="text-align: justify">{{ victim.content }}</p>
+                </div>
+
+        {% endfor %}
+
+
+{%endblock%}

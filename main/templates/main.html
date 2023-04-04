@@ -6,107 +6,35 @@
 <body>
     <div class="intro">
         <div class="video">
-            <video class="video_media" src="{%static 'video/video.mp4'%}" autoplay muted loop></video>
+            <img class="video_media" src="{% static 'img/img1.png' %}">
         </div>
     </div>
 
-    <div class="nav">
-  <button class="nav-toggle" aria-label="Toggle navigation">
-    <span class="nav-toggle-icon"></span>
-  </button>
-  <nav class="nav-menu">
-    <ul class="navbar-nav ml-auto py-4 py-md-0">
-        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-            <a class="nav-link" href="#">Тизме</a>
-        </li>
-        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-            <a class="nav-link" href="#">Изде</a>
-        </li>
-        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-            <a class="nav-link" href="#">Адам кош</a>
-        </li>
-        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-            <a class="nav-link" href="#" role="tab">Байланыш</a>
-        </li>
-        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-            <a class="nav-link" href="{% url 'login' %}">Кириңиз</a>
-        </li>
-    </ul>
-  </nav>
-</div>
-    <div>
-        <div class="container mt-5 mb-5">
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <h4>Son Haberler</h4>
-                    <ul class="timeline">
-                        <li id="header_new">
-                            <a class="header_new" href="#"></a>
-                            <a href="#" class="float-right"></a>
-                            <p></p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-2.0.3.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
-
-<nav class="navbar navbar-light navbar-expand-sm bg-light border-bottom">
-  <button class="d-md-none navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-  <a href="#" class="navbar-brand mx-md-0 mx-sm-auto">Laravel</a>
-
-  <ul class="navbar-nav navbar-right order-md-3">
-    <li class="nav-item">
-      <a href="#" class="nav-link">Item</a>
-    </li>
-  </ul>
-
-  <div class="collapse navbar-collapse" id="navbar-content">
-    <ul class="navbar-nav navbar-left">
-      <li class="nav-item"><a href="#" class="nav-link">Item 1</a></li>
-    </ul>
-  </div>
-</nav>
     <div class="navigation-wrap">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
 					<nav class="navbar navbar-expand-md navbar-light">
-						<a class="navbar-brand" href="#"><img src="{% static 'img/barskoon.svg' %}" alt=""></a>
+						<a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/img.png' %}" alt=""></a>
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-{#							<ul class="navbar-nav ml-auto py-4 py-md-0">#}
-{#								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">#}
-{#									<a class="nav-link" href="#">Тизме</a>#}
-{#								</li>#}
-{#								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">#}
-{#									<a class="nav-link" href="#">Изде</a>#}
-{#								</li>#}
-{#                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">#}
-{#									<a class="nav-link" href="#">Адам кош</a>#}
-{#								</li>#}
-{#                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">#}
-{#									<a class="nav-link" href="#" role="tab">Байланыш</a>#}
-{#								</li>#}
-{#								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">#}
-{#									<a class="nav-link" href="{% url 'login' %}">Кириңиз</a>#}
-{#								</li>#}
-{#                                <form method="POST" action="/search/" id="content">#}
-{#                                    {%csrf_token %}#}
-{#                                    <input autocomplete="off" type="text" name="input" class="input" id="search-input" placeholder="Ara...">#}
-{#                                </form>#}
-{#							</ul>#}
 						</div>
+                        <ul class="navbar-nav ml-auto py-4 py-md-0">
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                <a class="nav-link" href="{% url 'list_of_person' %}">Тизме</a>
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                <a class="nav-link" href="#">Адам кош</a>
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                <a class="nav-link" href="#" role="tab">Байланыш</a>
+                            </li>
+                        </ul>
 					</nav>
 				</div>
 			</div>
 		</div>
     </div>
+
     <script>
         const input = document.getElementById("search-input");
         const searchBtn = document.getElementById("search-btn");
@@ -122,4 +50,4 @@
             navMenu.classList.toggle('open');
 });
     </script>
-</body>>
+</body>

@@ -16,15 +16,15 @@
 	display: block;
 }
 .nav-link{
-	color: #03989E !important;
+	color: #611902 !important;
 	font-weight: 500;
     transition: all 200ms linear;
 }
 .nav-item:hover .nav-link{
-	color: #03989E !important;
+	color: #611902 !important;
 }
 .nav-item.active .nav-link{
-	color: #03989E !important;
+	color: #611902 !important;
 }
 .nav-link {
 	position: relative;
@@ -38,7 +38,7 @@
 	width: 100%;
 	height: 2px;
 	content: '';
-	background-color: #03989E;
+	background-color: #611902;
 	opacity: 0;
     transition: all 200ms linear;
 }
@@ -59,12 +59,12 @@
     margin-left: 70px;
     border: none;
     outline: none;
-    color: #03989E;
+    color: #611902;
     background: transparent;
     transition: all 200ms linear;
 }
 .input::placeholder {
-    color: #03989E;
+    color: #611902;
 }
 
 .search_form {
