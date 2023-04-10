@@ -13,7 +13,7 @@ class Victim(models.Model):
     occupation = models.CharField(max_length=30)
     bedfellow = models.CharField(max_length=30)
     children = models.CharField(max_length=30)
-    photo = models.CharField(max_length=50)
+    photo = models.ImageField(upload_to='images/')
     content = models.TextField(default="0")
     date_of_publish = models.DateField(default=datetime.now)
     up_vote = models.IntegerField(default=0)
@@ -23,18 +23,3 @@ class Victim(models.Model):
     date_of_editing = models.DateField(default=datetime.now)
     def __str__(self):
         return self.first_name + " " + self.last_name
-
-# class Article(models.Model):
-#     # victim_id = models.ForeignKey(Victim, on_delete=models.CASCADE)
-#     title = models.CharField(max_length=30, default="0")
-#     content = models.TextField(default="0")
-#     date_of_publish = models.DateField(default=datetime.now)
-#     up_vote = models.IntegerField(default=0)
-#     is_proven = models.BooleanField(default=False)
-#     before_edit_content = models.TextField(default="0")
-#     after_edit_content = models.TextField(default="0")
-#     date_of_editing = models.DateField(default=datetime.now)
-#
-#     def __str__(self):
-#         return self.title
-    # victim_id = models.OneToOneField(Victim, on_delete=models.CASCADE, primary_key=True)
