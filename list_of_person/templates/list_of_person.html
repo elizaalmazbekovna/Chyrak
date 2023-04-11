@@ -3,6 +3,8 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'list_of_person.css' %}"/>
     <div class="container d-flex justify-content-center flex-column align-items-center">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
         <div class="d-flex justify-content-center flex-row mt-3 align-items-center">
             <button class="border-0 bg-white">
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="36" fill="currentColor"
@@ -40,51 +42,230 @@
     </div>
 
 {##}
-{#<div class="pagination">#}
-{#    <span class="step-links">#}
-{#        {% if page_obj.has_previous %}#}
-{#            <a href="?page=1">&laquo; first</a>#}
-{#            <a href="?page={{ page_obj.previous_page_number }}">previous</a>#}
-{#        {% endif %}#}
+
+
 {##}
-{#        <span class="current">#}
-{#            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.#}
-{#        </span>#}
+{#       <div class="pagination">#}
 {##}
-{#        {% if page_obj.has_next %}#}
-{#            <a href="?page={{ page_obj.next_page_number }}">next</a>#}
-{#            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>#}
-{#        {% endif %}#}
-{#    </span>#}
-{#</div>#}
+{#            {% if page_obj.has_previous %}#}
+{#            <a class="pagination-action" href="?page=1">#}
+{#                <i class='bx bx-chevrons-left' aria-hidden="true"></i> </a>#}
+{#            <a class="pagination-action" href="?page={{ page_obj.previous_page_number }}">#}
+{#                <i class='bx bx-chevron-left' aria-hidden="true"></i>#}
+{#            </a>#}
+{#            {% endif %}#}
+{#            {% for num in page_obj.paginator.page_range %}#}
+{#                {% if page_obj.number == num %}#}
+{#                    <span class="pagination-number pagination-current">{{ num }}</span>#}
+{#                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}#}
+{#                   <a class="pagination-number" href="?page={{ num }}">{{ num }}</a>#}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+{#            {% if files.has_next %}#}
+{#                <a class="pagination-action" href="?page={{ page_obj.next_page_number }}">#}
+{#                    <i class='bx bx-chevron-right' aria-hidden="true"></i>#}
+{#                </a>#}
+{#                <a class="pagination-action" href="?page={{ page_obj.paginator.num_pages }}">#}
+{#                    <i class='bx bx-chevrons-right' aria-hidden="true"></i>#}
+{#                </a>#}
+{#            {% endif %}#}
+{##}
+{#    </div>#}
+    <style>
+        html { padding: 40px; }
+a {
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  transition: all .2s linear;
+}
 
+@font-face {
+  font-family: 'Edmondsans';
+  src: url('http://designitcodeit.com/live/huP64P3jnA76/fonts/edmondsans-bold-webfont.eot');
+  src: url('http://designitcodeit.com/live/huP64P3jnA76/fonts/edmondsans-bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('http://designitcodeit.com/live/huP64P3jnA76/fonts/edmondsans-bold-webfont.woff') format('woff'),
+       url('http://designitcodeit.com/live/huP64P3jnA76/fonts/edmondsans-bold-webfont.ttf') format('truetype'),
+       url('http://designitcodeit.com/live/huP64P3jnA76/fonts/edmondsans-bold-webfont.svg#EdmondsansBoldRegular') format('svg');
+  font-weight: bold;
+  font-style: normal;
 
-       <div class="pagination">
+}
 
-            {% if page_obj.has_previous %}
-            <a class="pagination-action" href="?page=1">
-                <i class='bx bx-chevrons-left' aria-hidden="true"></i> </a>
-            <a class="pagination-action" href="?page={{ page_obj.previous_page_number }}">
-                <i class='bx bx-chevron-left' aria-hidden="true"></i>
-            </a>
-            {% endif %}
-            {% for num in page_obj.paginator.page_range %}
-                {% if page_obj.number == num %}
-                    <span class="pagination-number pagination-current">{{ num }}</span>
-                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                   <a class="pagination-number" href="?page={{ num }}">{{ num }}</a>
-                {% endif %}
+.pagination li {
+  border-top-color: #282828;
+  border-bottom-color: #282828;
+}
+.pagination li:before,
+.pagination .active:after,
+.pagination .active:before,
+.pagination .active ~ li:before {
+  border-left-color: #282828;
+  border-right-color: #282828;
+}
+.pagination a {
+  color: #888;
+  font-family: "Edmondsans";
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.pagination .active a { color: #ccc;  }
+.pagination .disabled a,
+.pagination .disabled:hover a { color: #333; cursor: default;  }
+.pagination li:hover a { color: #c9282d; }
+
+/*
+ * Basic style
+ */
+.pagination { text-align: center;}
+.pagination ul {
+  display: inline-block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  margin-top: 100px;
+    margin-left: 500px;
+
+}
+.pagination li {
+  border-right:10px solid transparent;
+  border-bottom-width: 17px;
+  border-top-width: 17px;
+  border-style: solid;
+
+  transform:rotate(360deg);
+  border-left: 0;
+  height: 0;
+  float: left;
+  margin-right: 3px;
+  position: relative;
+}
+.pagination li:before {
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-top-color: transparent;
+  border-width: 17px 10px 17px 0;
+  border-style: solid;
+  position: absolute;
+  content: '';
+  left: -10px;
+  height: 0px;
+  top: -17px;
+  width: 0px;
+}
+.pagination .active ~ li:before {
+  border-bottom-color: transparent;
+  border-top-color: transparent;
+  border-width: 17px 0 17px 10px;
+  right: -10px;
+  left: auto;
+}
+.pagination .active ~ li {
+  border-left:10px solid transparent;
+  border-right: 0;
+}
+.pagination .active  {
+  border-right: 0;
+  border-left: 0;
+}
+.pagination .active:after,
+.pagination .active:before {
+  border-bottom-color: transparent;
+  border-top-color: transparent;
+  border-width: 17px 10px 17px 0;
+  border-style: solid;
+  position: absolute;
+  content: '';
+  height: 0px;
+  width: 0px;
+  top: -17px;
+  left: -10px;
+}
+.pagination .active:after {
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  border-width: 17px 0 17px 10px;
+  left: 100%;
+}
+.pagination a {
+  line-height: 36px;
+  margin-top: -17px;
+  display: block;
+  height: 34px;
+  width: 30px;
+}
+.pagination .prev {
+  -webkit-border-radius: 20px 0 0 20px;
+  -moz-border-radius: 20px 0 0 20px;
+  border-radius: 20px 0 0 20px;
+}
+.pagination .next {
+  -webkit-border-radius: 0 20px 20px 0;
+  -moz-border-radius: 0 20px 20px 0;
+  border-radius: 0 20px 20px 0;
+  border-right: 0;
+}
+.pagination .prev a,
+.pagination .next a {
+  text-indent: -4px;
+  line-height: 38px;
+  font-size: 30px;
+}
+.pagination .prev a { text-indent: 4px; }
+.pagination .prev:before,
+.pagination .next:before { content: none; }
+    </style>
+
+<div class="pagination">
+  <ul>
+      {% if page_obj.has_previous %}
+        <li class="prev disabled"><a href="?page={{ page_obj.previous_page_number }}">&lt;</a></li>
+
+      {% endif %}
+
+  {% for num in page_obj.paginator.page_range %}
+                   <li><a  href="?page={{ num }}">{{ num }}</a></li>
             {% endfor %}
-            {% if files.has_next %}
-                <a class="pagination-action" href="?page={{ page_obj.next_page_number }}">
-                    <i class='bx bx-chevron-right' aria-hidden="true"></i>
-                </a>
-                <a class="pagination-action" href="?page={{ page_obj.paginator.num_pages }}">
-                    <i class='bx bx-chevrons-right' aria-hidden="true"></i>
-                </a>
-            {% endif %}
 
-    </div>
+  {% if page_obj.has_next %}
+        <li class="next"><a href="{{ page.next_page_number }}">&gt;</a></li>
+  {% endif %}
+
+  </ul>
+</div>
+
+    <script>
+                $('.pagination li').on('click', function(event) {
+          event.preventDefault();
+          var $this = $(this),
+              $pagination = $this.parent(),
+              $pages = $pagination.children(),
+              $active = $pagination.find('.active');
+
+          if($this.hasClass('prev')) {
+            if ($pages.index($active) > 1) {
+              $active.removeClass('active').prev().addClass('active');
+            }
+          } else if($this.hasClass('next')) {
+            if ($pages.index($active) < $pages.length - 2) {
+              $active.removeClass('active').next().addClass('active');
+            }
+          } else {
+            $this.addClass('active').siblings().removeClass('active');
+          }
+
+          $active = $pagination.find('.active');
+
+          $('.prev')[$pages.index($active) == 1 ? 'addClass' : 'removeClass']('disabled');
+          $('.next')[$pages.index($active) == $pages.length - 2 ? 'addClass' : 'removeClass']('disabled');
+
+        });
+
+        $('.pagination li:eq(1)').trigger('click');
+
+    </script>
 
 
 

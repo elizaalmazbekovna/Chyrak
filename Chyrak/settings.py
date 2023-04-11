@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'person.apps.PersonConfig',
     'search.apps.SearchConfig',
     'list_of_person.apps.ListOfPersonConfig',
+    'create_person',
 
     #registration apps
     'django.contrib.sites',
