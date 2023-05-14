@@ -2,9 +2,8 @@
 {% block content %}
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'list_of_person.css' %}"/>
+<div>
     <div class="container d-flex justify-content-center flex-column align-items-center">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-</script>
         <div class="d-flex justify-content-center flex-row mt-3 align-items-center">
             <button class="border-0 bg-white">
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="36" fill="currentColor"
@@ -40,6 +39,7 @@
         </div>
     {% endfor %}
     </div>
+</div>
 
 {##}
 

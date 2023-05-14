@@ -131,6 +131,23 @@
     top: 0;
     left: 0;
 }
+
+@media (max-width: 768px) {
+  .photo {
+    padding-bottom: 100%;
+  }
+  .photo_media {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+}
+
+
+
 ul.timeline {
     list-style-type: none;
     position: relative;
@@ -238,4 +255,185 @@ ul.timeline > li:before {
 }
 .input::placeholder {
     color: white;
+}
+
+
+@media (max-width: 576px) {
+  .navigation-wrap {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-brand img {
+    height: 100px;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .button {
+    margin-bottom: 50px;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .search_form::after {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+
+.footer {
+    background-color: #3D3D3D;
+    color: #FFFFFF;
+    padding: 20px;
+}
+
+.footer-logo {
+    width: 75px;
+    height: auto;
+    margin-left: auto;
+    opacity: 0.5;
+}
+
+.footer-text {
+    text-align: justify;
+    font-size: 11px;
+    opacity: 0.6;
+    margin-right: 50px;
+    padding-left: 40px;
+    margin-top:17px;
+}
+
+.footer-text2 {
+    border-left: 1px solid #FFFFFF;
+    font-size: 11px;
+    opacity: 0.7;
+}
+.footer-text2 img {
+    margin-left: 15px;
+}
+.footer-text2 p{
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+    .footer {
+        padding: 10px;
+    }
+    .footer-logo {
+        width: 50px;
+    }
+    .footer-text {
+        font-size: 10px;
+        margin-right: 0;
+        padding-left: 0;
+        margin-top: 10px;
+        text-align: center;
+    }
+    .footer-text2 {
+        border-left: none;
+        border-top: 1px solid #FFFFFF;
+        margin-top: 10px;
+        padding-top: 10px;
+        text-align: center;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .footer-logo {
+        width: 60px;
+    }
+    .footer-text {
+        font-size: 10px;
+        margin-right: 20px;
+        padding-left: 0;
+        margin-top: 10px;
+        text-align: justify;
+    }
+    .footer-text2 {
+        border-left: none;
+        border-top: 1px solid #FFFFFF;
+        margin-top: 10px;
+        padding-top: 10px;
+        text-align: center;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .footer {
+        padding: 20px;
+    }
+    .footer-logo {
+        width: 75px;
+    }
+    .footer-text {
+        font-size: 11px;
+        margin-right: 50px;
+        padding-left: 40px;
+        margin-top:17px;
+        text-align: justify;
+    }
+    .footer-text2 {
+        border-left: 1px solid #FFFFFF;
+        border-top: none;
+        margin-top: 0;
+        padding-top: 0;
+        text-align: left;
+    }
+}
+
+.main-info-block {
+    max-width: auto;
+    background-color: #611902;
+}
+
+.info-block {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.text-block {
+    background-color: #611902;
+    padding: 20px;
+}
+
+.text-block p {
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: justify;
+    margin: 20px 0;
+}
+
+/* Создаем блок, на который будем накладывать эффект тумана */
+.main-info-block {
+  position: relative;
+}
+
+/* Создаем псевдоэлемент, который будет накладываться на блок */
+.main-info-block::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(https://i.imgur.com/QDy8UVz.png) repeat-y; /* картинка с туманом */
+  opacity: 0.5; /* устанавливаем прозрачность */
+  animation: fog 10s linear infinite; /* задаем анимацию */
+  z-index: -1; /* устанавливаем z-index, чтобы псевдоэлемент был под блоком */
+}
+
+/* Создаем анимацию для движения тумана */
+@keyframes fog {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }

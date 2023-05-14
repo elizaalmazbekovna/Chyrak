@@ -1,0 +1,80 @@
+.form-control {
+  text-align: right;
+  border-style: solid;
+  border-radius: 0;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+  border-color: #0c0604;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #ced4da;
+}
+
+
+
+.button {
+    margin-top: 10px;
+    margin-left: -2px;
+    margin-bottom: 100px;
+    width: 175px;
+    background-color: #3D3D3D;
+    color: #FFFFFF;
+    padding: 6px 0;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    border-radius: 0 40px 0 40px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.file-button {
+    width: 175px;
+    background-color: #3D3D3D;
+    color: #FFFFFF;
+    padding: 6px 0;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    border-radius: 0 40px 0 40px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+
+@media (max-width: 767px) {
+    .button,
+    file-button {
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .button,
+    .file-button {
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+}
+
+
+.content-area {
+    border-style: solid;
+    border-radius: 0;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-color: #0c0604;
+    margin-top: 10px;
+    width: 100%;
+    height: 380px;
+    padding: 6px 10px;
+    resize: none;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 1.5;
+}

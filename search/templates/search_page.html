@@ -15,11 +15,11 @@
     </div>
     {% if results %}
     <div class="container d-flex justify-content-center flex-column align-items-center">
-        {% for obj in results %}
+        {% for person in results %}
         <div class="card border-0 mt-3 " style="width: 75%;">
             <div class="card-body">
-                <a href="{% url "person_page" %}" class="card-title fs-2 text-decoration-none" style="color: #611902;">
-                {{ obj.first_name }} {{ obj.last_name }}
+                <a href="{% url 'person_page' person.id %}" class="card-title fs-2 text-decoration-none" style="color: #611902;">
+                {{ person.first_name }} {{ person.last_name }}
                 </a>
                 <p class="card-text fs-6" style="
                 display: -webkit-box;
@@ -27,7 +27,7 @@
                 -webkit-box-orient: vertical;
                 overflow: hidden;
                 text-overflow: ellipsis;">
-                    {{ obj.content }}
+                    {{ person.content }}
                 </p>
             </div>
         </div>

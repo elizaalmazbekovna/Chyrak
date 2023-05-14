@@ -1,45 +1,89 @@
 {% extends 'base.html' %}
-
 {% block content %}
+    {% load static %}
+        <link rel="stylesheet" href="{%static 'add_person.css'%}">
+{#    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"#}
+{#        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">#}
 
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-<form method="post">
-    {% csrf_token %}
-    <div class="container w-50">
-        <div class="row mt-3">
-            <div class="col">
-                <input type="text" class="form-control" id="" placeholder="Аты">\
-                {{ form.username }}
+<div>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="container w-50">
+            <div class="row mt-3">
+                <div class="col">
+                    <input class="form-control" id="exampleFormControlInput1" name="{{ form.first_name.name }}" placeholder="Аты">
+                </div>
+                <div class="col">
+                    <input class="form-control" id="exampleFormControlInput1" name="{{ form.last_name.name }}" placeholder="Атасынын аты">
+                </div>
             </div>
-            <div class="col">
-                <input type="text" class="form-control" id="" placeholder="Атасынын аты">
-                {{ form.username }}
+            <div class="row mt-3">
+                <div class="col">
+                    <input class="form-control" id="exampleFormControlInput1" name="{{ form.date_of_birth.name }}" placeholder="Туулган күнү">
+                </div>
+                <div class="col">
+                    <input class="form-control" id="exampleFormControlInput1" name="{{ form.date_of_death.name }}" placeholder="Каза тапкан күнү">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <input class="form-control" id="exampleFormControlInput1" name="{{ form.place_of_birth.name }}" placeholder="Туулган жери">
+                </div>
+                <div class="col">
+                    <input class="form-control" id="exampleFormControlInput1" name="{{ form.place_of_death.name }}" placeholder="Каза тапкан жери">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <input class="form-control" id="exampleFormControlInput1" name="{{ form.nationality.name }}" placeholder="Улуту">
+                </div>
+                <div class="col">
+                    <input class="form-control" id="exampleFormControlInput1" name="{{ form.occupation.name }}" placeholder="Ишмердиги">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <input class="form-control" id="exampleFormControlInput1" name="{{ form.blame.name }}" placeholder="Коюлган айып">
+                </div>
+                <div class="col">
+                    <input class="form-control" id="exampleFormControlInput1" name="{{ form.rehabilitated.name }}" placeholder="Акталгандыгы">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <input class="form-control" id="exampleFormControlInput1" name="{{ form.bedfellow.name }}" placeholder="Жубайы">
+                </div>
+                <div class="col">
+                    <input class="form-control" id="exampleFormControlInput1" name="{{ form.children.name }}" placeholder="Балдары">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <button class="file-button" onclick="document.getElementById('file-input').click()">Сүрөт жүктө</button>
+                    <input id="file-input" type="file" style="display:none" name="{{ form.photo.name }}">
+                </div>
+                <div class="col">
+                    <input class="form-control" id="exampleFormControlInput1" name="{{ form.desc_of_photo.name }}" placeholder="Сүрөттүн ачыктамасы">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <button class="file-button" onclick="document.getElementById('file-input').click()">Файл жүктө</button>
+                    <input id="file-input" type="file" style="display:none" name="{{ form.file.name }}">
+                </div>
+                <div class="col">
+                    <input class="form-control" id="exampleFormControlInput1" name="{{ form.desc_of_file.name }}" placeholder="Файлдын ачыктамасы">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <textarea class="content-area"  name="{{ form.content.name }}" placeholder="Кененирээк маалымат"></textarea>
+                </div>
+            <div>
+                <input class="button" value="Сакта" type="submit">
             </div>
         </div>
-        <div class="row mt-3">
-            <div class="col">
-                <input type="text" class="form-control" id="" placeholder="ТУУЛГАН ЖЕРИ">
-                {{ form.username }}
-            </div>
-            <div class="col">
-                <input type="text" class="form-control" id="" placeholder="ӨЛГӨН ЖЕРИ">
-                {{ form.username }}
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col">
-                <input type="text" class="form-control" id="" placeholder="ТУУЛГАН ЖЫЛЫ">
-                {{ form.username }}
-            </div>
-            <div class="col">
-                <input type="text" class="form-control" id="" placeholder="ӨЛГӨН КҮНҮ">
-                {{ form.username }}
-            </div>
-        </div>
-    </div>
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
