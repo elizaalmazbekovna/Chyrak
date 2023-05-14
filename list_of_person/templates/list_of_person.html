@@ -4,21 +4,39 @@
     <link rel="stylesheet" type="text/css" href="{% static 'list_of_person.css' %}"/>
 <div>
     <div class="container d-flex justify-content-center flex-column align-items-center">
+<<<<<<< HEAD
+=======
+        <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+
+>>>>>>> 335bf6e1cd2aa5a00ee9af56ebf4bae1f475912b
         <div class="d-flex justify-content-center flex-row mt-3 align-items-center">
-            <button class="border-0 bg-white">
+
+
+            <form action="{% url 'list_of_person' %}" method="get">
+            <select name="sort_option" id="sort_option">
+                <option  {% if sort_option == 'first_name' %}selected{% endif %} value="first_name">Name (A-Z)</option>
+                <option  {% if sort_option == "-first_name" %}selected{% endif %} value='-first_name'>Name (Z-A)</option>
+            </select>
+                <button class="border-0 bg-white">
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="36" fill="currentColor"
                     class="bi bi-filter-left me-3" viewBox="0 0 16 16">
                     <path
                         d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
                 </svg>
             </button>
+            </form>
+
+
             <form method="GET" action="{% url 'search' %}"class=" " style="width: 30vw;">
                 <input type="search" name="q" value="{{ request.GET.q }}" class="form-control form-control-dark" placeholder="Издеңиз..." aria-label="Search">
             </form>
         </div>
     </div>
     <div class="container d-flex justify-content-center flex-column align-items-center">
-{#    {% for victim_article in victim_articles %}#}
     {% for person in page_obj %}
         <div class="card border-0 mt-3 " style="width: 75%;">
             <div class="card-body">
@@ -41,36 +59,6 @@
     </div>
 </div>
 
-{##}
-
-
-{##}
-{#       <div class="pagination">#}
-{##}
-{#            {% if page_obj.has_previous %}#}
-{#            <a class="pagination-action" href="?page=1">#}
-{#                <i class='bx bx-chevrons-left' aria-hidden="true"></i> </a>#}
-{#            <a class="pagination-action" href="?page={{ page_obj.previous_page_number }}">#}
-{#                <i class='bx bx-chevron-left' aria-hidden="true"></i>#}
-{#            </a>#}
-{#            {% endif %}#}
-{#            {% for num in page_obj.paginator.page_range %}#}
-{#                {% if page_obj.number == num %}#}
-{#                    <span class="pagination-number pagination-current">{{ num }}</span>#}
-{#                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}#}
-{#                   <a class="pagination-number" href="?page={{ num }}">{{ num }}</a>#}
-{#                {% endif %}#}
-{#            {% endfor %}#}
-{#            {% if files.has_next %}#}
-{#                <a class="pagination-action" href="?page={{ page_obj.next_page_number }}">#}
-{#                    <i class='bx bx-chevron-right' aria-hidden="true"></i>#}
-{#                </a>#}
-{#                <a class="pagination-action" href="?page={{ page_obj.paginator.num_pages }}">#}
-{#                    <i class='bx bx-chevrons-right' aria-hidden="true"></i>#}
-{#                </a>#}
-{#            {% endif %}#}
-{##}
-{#    </div>#}
     <style>
         html { padding: 40px; }
 a {
@@ -216,6 +204,8 @@ a {
 .pagination .prev a { text-indent: 4px; }
 .pagination .prev:before,
 .pagination .next:before { content: none; }
+
+
     </style>
 
 <div class="pagination">
@@ -225,8 +215,16 @@ a {
 
       {% endif %}
 
+
   {% for num in page_obj.paginator.page_range %}
-                   <li><a  href="?page={{ num }}">{{ num }}</a></li>
+
+
+      {% if page_obj.number == num %}
+        <li class="active"><a href="?page={{ num }}">{{ num }}</a></li>
+      {% else %}
+        <li><a href="?page={{ num }}">{{ num }}</a></li>
+      {% endif %}
+
             {% endfor %}
 
   {% if page_obj.has_next %}
@@ -237,6 +235,7 @@ a {
 </div>
 
     <script>
+        $( document ).ready(function(){
                 $('.pagination li').on('click', function(event) {
           event.preventDefault();
           var $this = $(this),
@@ -264,6 +263,7 @@ a {
         });
 
         $('.pagination li:eq(1)').trigger('click');
+        });
 
     </script>
 
