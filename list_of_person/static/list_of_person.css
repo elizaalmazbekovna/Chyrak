@@ -1,297 +1,294 @@
-
-
-
-c.header_emp {
-    width: 1210px;
-    border-bottom: rgba(0, 0, 0, 0.2) solid 1px;
-    margin: 40px auto 30px auto;
-    padding-bottom: 10px;
+.pagination li {
+    border-top-color: #9D9D9D;
+    border-bottom-color: #9D9D9D;
 }
 
-.header_emp > h5 {
-    color: dimgray;
+.pagination .active:after,
+.pagination .active:before,
+.pagination .active~li:before,
+.pagination li:before {
+    border-left-color: #9D9D9D;
+    border-right-color: #9D9D9D;
 }
 
-/*.grid * {*/
-/*    box-sizing: border-box;*/
-/*}*/
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    column-gap: 30px;
-    row-gap: 30px;
-    padding: 20px 0;
-}
-
-@media only screen and (max-width: 1200px) {
-    .grid {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-}
-@media only screen and (max-width: 900px) {
-    .grid {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-@media only screen and (max-width: 600px) {
-    .grid {
-        grid-template-columns: 1fr;
-    }
-}
-.grid-item {
-    border: none;
-    width: 100%;
-    height: 100%;
-}
-.grid-item .image {
-    height: 200px;
-    overflow: hidden;
-}
-.grid-item .info {
-    position: relative;
-    height: calc(100% - 200px);
-    padding: 16px 14px 80px 14px;
-}
-.grid-item .image img  {
-      transition: transform 280ms ease-in-out;
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.grid-item:hover .image img  {
-    transform: scale(1.1);
-}
-.info h2 {
-    color: #03989E;
-    font-size: 18px;
-    font-weight: normal;
-    margin-bottom: 8px;
-    text-align: left;
-}
-.info-text p {
-    color: dimgray;
+.pagination a {
+    color: #FFFFFF;
+    font-family: Edmondsans;
     font-size: 15px;
-    line-height: 20px;
-    margin-bottom: 10px;
-}
-.info-text p:last-child {
-    margin-bottom: 0;
-}
-.grid-item .button-wrap {
-    display: block;
-    width: 100%;
-    position: absolute;
-    bottom: 14px;
-    left: 0;
-    text-align: center;
+    font-weight: 700;
+    text-decoration: none
 }
 
-.atuin-btn {
-    display: inline-flex;
-    text-decoration: none;
-    position: relative;
-    font-size: 20px;
-    line-height: 20px;
-    padding: 8px 25px;
-    color: #FFF;
-    font-weight: bold;
-    text-transform: uppercase;
-    background: #03989E;
-    cursor: pointer;
-    border: 2px solid #03989E;
+.pagination .active a {
+    color: #444444;
 }
-.atuin-btn:hover,
-.atuin-btn:active,
-.atuin-btn:focus {
-    color: #FFF;
-    text-decoration: none;
+
+.pagination .disabled a,
+.pagination .disabled:hover a {
+    color: #9D9D9D;
+    cursor: default
 }
-.atuin-btn:after,
-.atuin-btn:before {
+
+.pagination li:hover a {
+    color: #3D3D3D;
+}
+
+.pagination {
+    text-align: center
+}
+
+.pagination ul {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center
+}
+
+.pagination li {
+    border-right: 10px solid transparent;
+    border-bottom-width: 17px;
+    border-top-width: 17px;
+    border-style: solid;
+    transform: rotate(360deg);
+    border-left: 0;
+    height: 0;
+    float: left;
+    margin-right: 3px;
+    position: relative
+}
+
+.pagination li:before {
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    border-width: 17px 10px 17px 0;
+    border-style: solid;
     position: absolute;
-    height: 4px;
-    left: 50%;
-    background: #03989E;
-    bottom: -6px;
     content: "";
-    transition: all 280ms ease-in-out;
+    left: -10px;
+    height: 0;
+    top: -17px;
+    width: 0
+}
+
+.pagination .active~li:before {
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+    border-width: 17px 0 17px 10px;
+    right: -10px;
+    left: auto
+}
+
+.pagination .active~li {
+    border-left: 10px solid transparent;
+    border-right: 0
+}
+
+.pagination .active {
+    border-right: 0;
+    border-left: 0
+}
+
+.pagination .active:after,
+.pagination .active:before {
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+    border-width: 17px 10px 17px 0;
+    border-style: solid;
+    position: absolute;
+    content: "";
+    height: 0;
     width: 0;
-}
-.atuin-btn:before {
-    top: -6px;
-}
-.atuin-btn:hover:after,
-.atuin-btn:hover:before,
-.atuin-btn:active:after,
-.atuin-btn:active:before,
-.atuin-btn:focus:after,
-.atuin-btn:focus:before {
-    width: 100%;
-    left: 0;
+    top: -17px;
+    left: -10px
 }
 
-.news-class {
-    width: 1210px;
-    margin: 40px auto 30px auto;
+.pagination .active:after {
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    border-width: 17px 0 17px 10px;
+    left: 100%
 }
 
-html {
-  padding: 40px;
-}
-a {
-  -webkit-transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  transition: all 0.2s linear;
+.pagination a {
+    line-height: 24px;
+    margin-top: -17px;
+    display: block;
+    height: 22px;
+    width: 24px
 }
 
 @font-face {
-  font-family: "Edmondsans";
-  src: url("http://designitcodeit.com/live/huP64P3jnA76/fonts/edmondsans-bold-webfont.eot");
-  src: url("http://designitcodeit.com/live/huP64P3jnA76/fonts/edmondsans-bold-webfont.eot?#iefix")
-      format("embedded-opentype"),
-    url("http://designitcodeit.com/live/huP64P3jnA76/fonts/edmondsans-bold-webfont.woff")
-      format("woff"),
-    url("http://designitcodeit.com/live/huP64P3jnA76/fonts/edmondsans-bold-webfont.ttf")
-      format("truetype"),
-    url("http://designitcodeit.com/live/huP64P3jnA76/fonts/edmondsans-bold-webfont.svg#EdmondsansBoldRegular")
-      format("svg");
-  font-weight: bold;
-  font-style: normal;
+    font-family: Edmondsans;
+    src: url(http://designitcodeit.com/live/huP64P3jnA76/fonts/edmondsans-bold-webfont.eot);
+    src: url(http://designitcodeit.com/live/huP64P3jnA76/fonts/edmondsans-bold-webfont.eot?#iefix) format('embedded-opentype'), url(http://designitcodeit.com/live/huP64P3jnA76/fonts/edmondsans-bold-webfont.woff) format('woff'), url(http://designitcodeit.com/live/huP64P3jnA76/fonts/edmondsans-bold-webfont.ttf) format('truetype'), url(http://designitcodeit.com/live/huP64P3jnA76/fonts/edmondsans-bold-webfont.svg#EdmondsansBoldRegular) format('svg');
+    font-weight: 700;
+    font-style: normal
 }
 
 .pagination li {
-  border-top-color: #282828;
-  border-bottom-color: #282828;
+    border-top-color: #9D9D9D;
+    border-bottom-color: #9D9D9D;
 }
-.pagination li:before,
+
 .pagination .active:after,
 .pagination .active:before,
-.pagination .active ~ li:before {
-  border-left-color: #282828;
-  border-right-color: #282828;
+.pagination .active~li:before,
+.pagination li:before {
+    border-left-color: #9D9D9D;
+    border-right-color: #9D9D9D;
 }
+
 .pagination a {
-  color: #888;
-  font-family: "Edmondsans";
-  font-size: 15px;
-  font-weight: bold;
-  text-decoration: none;
+    color: #FFFFFF;
+    font-family: Edmondsans;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none
 }
+
 .pagination .active a {
-  color: #ccc;
+    color: #ccc
 }
+
 .pagination .disabled a,
 .pagination .disabled:hover a {
-  color: #333;
-  cursor: default;
+    color: #9D9D9D;
+    cursor: default
 }
+
 .pagination li:hover a {
-  color: #c9282d;
+    color: #333333;
 }
 
-/*
- * Basic style
- */
 .pagination {
-  text-align: center;
+    text-align: center
 }
-.pagination ul {
-  display: inline-block;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-.pagination li {
-  border-right: 10px solid transparent;
-  border-bottom-width: 17px;
-  border-top-width: 17px;
-  border-style: solid;
 
-  transform: rotate(360deg);
-  border-left: 0;
-  height: 0;
-  float: left;
-  margin-right: 3px;
-  position: relative;
+.pagination ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px
 }
+
+.pagination li {
+    margin: 0 10px
+}
+
+@media only screen and (max-width: 600px) {
+  .pagination ul {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .pagination li {
+    margin: 5px 0;
+  }
+}
+
+@media only screen and (max-width:600px) {
+    .p.pagination li pagination ul {
+        flex-direction: column;
+        margin-top: 10px
+    }
+
+    .pagination li {
+        margin: 5px 0
+    }
+}
+
+.pagination li {
+    border-right: 10px solid transparent;
+    border-bottom-width: 17px;
+    border-top-width: 17px;
+    border-style: solid;
+    transform: rotate(360deg);
+    border-left: 0;
+    height: 0;
+    float: left;
+    margin-right: 3px;
+    position: relative
+}
+
 .pagination li:before {
-  border-bottom-color: transparent;
-  border-left-color: transparent;
-  border-top-color: transparent;
-  border-width: 17px 10px 17px 0;
-  border-style: solid;
-  position: absolute;
-  content: "";
-  left: -10px;
-  height: 0px;
-  top: -17px;
-  width: 0px;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    border-width: 17px 10px 17px 0;
+    border-style: solid;
+    position: absolute;
+    content: '';
+    left: -10px;
+    height: 0;
+    top: -17px;
+    width: 0
 }
-.pagination .active ~ li:before {
-  border-bottom-color: transparent;
-  border-top-color: transparent;
-  border-width: 17px 0 17px 10px;
-  right: -10px;
-  left: auto;
+
+.pagination .active~li:before {
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+    border-width: 17px 0 17px 10px;
+    right: -10px;
+    left: auto
 }
-.pagination .active ~ li {
-  border-left: 10px solid transparent;
-  border-right: 0;
+
+.pagination .active~li {
+    border-left: 10px solid transparent;
+    border-right: 0
 }
+
 .pagination .active {
-  border-right: 0;
-  border-left: 0;
+    border-right: 0;
+    border-left: 0
 }
+
 .pagination .active:after,
 .pagination .active:before {
-  border-bottom-color: transparent;
-  border-top-color: transparent;
-  border-width: 17px 10px 17px 0;
-  border-style: solid;
-  position: absolute;
-  content: "";
-  height: 0px;
-  width: 0px;
-  top: -17px;
-  left: -10px;
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+    border-width: 17px 10px 17px 0;
+    border-style: solid;
+    position: absolute;
+    content: '';
+    height: 0;
+    width: 0;
+    top: -17px;
+    left: -10px
 }
+
 .pagination .active:after {
-  border-bottom-color: transparent;
-  border-right-color: transparent;
-  border-top-color: transparent;
-  border-width: 17px 0 17px 10px;
-  left: 100%;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    border-width: 17px 0 17px 10px;
+    left: 100%
 }
+
 .pagination a {
-  line-height: 36px;
-  margin-top: -17px;
-  display: block;
-  height: 34px;
-  width: 30px;
+    line-height: 36px;
+    margin-top: -17px;
+    display: block;
+    height: 34px;
+    width: 30px
 }
-.pagination .prev {
-  -webkit-border-radius: 20px 0 0 20px;
-  -moz-border-radius: 20px 0 0 20px;
-  border-radius: 20px 0 0 20px;
-}
-.pagination .next {
-  -webkit-border-radius: 0 20px 20px 0;
-  -moz-border-radius: 0 20px 20px 0;
-  border-radius: 0 20px 20px 0;
-  border-right: 0;
-}
-.pagination .prev a,
-.pagination .next a {
-  text-indent: -4px;
-  line-height: 38px;
-  font-size: 30px;
-}
-.pagination .prev a {
-  text-indent: 4px;
-}
-.pagination .prev:before,
-.pagination .next:before {
-  content: none;
+
+
+@media only screen and (max-width: 600px) {
+  .pagination ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pagination li {
+    margin: 5px 0;
+  }
 }

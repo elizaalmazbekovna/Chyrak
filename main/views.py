@@ -1,10 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-
-# Create your views here.
+import importlib
+person = importlib.import_module('person.models')
+Victim = person.Victim
 
 
 
 def index(request):
-
-    return render(request, 'main.html', locals())
+    victims = Victim.objects.all()
+    context = {'victims': victims}
+    return render(request, 'main.html', context)

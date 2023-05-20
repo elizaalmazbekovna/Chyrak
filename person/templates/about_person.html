@@ -13,9 +13,6 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'person.css' %}"/>
 
-    <hr>
-
-
 
 
 
@@ -32,8 +29,10 @@
 </head>
 
 <body>
+
+<hr>
 <style>
-    hr {
+hr {
   display: block;
   margin-top: 0;
   margin-bottom: 0.5em;
@@ -42,14 +41,63 @@
   border-style: inset;
   border-width: 1px;
   text-align: center;
-  width:80%;
+  width: 1200px;
 }
 
-img{
-  margin-left: 60px;
-
+@media screen and (max-width: 768px) {
+  hr {
+    width: 90%; /* Измените ширину по вашему усмотрению */
+  }
 }
-    </style>
+
+img {
+  margin-left: 0;
+}
+
+@media screen and (max-width: 768px) {
+  img {
+    margin-left: 30px; /* Измените отступ по вашему усмотрению */
+  }
+}
+
+.card-title {
+    font-size: 2rem;
+    text-decoration: none;
+    color: #611902;
+}
+
+.card-text {
+    font-size: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.main-content {
+    height: auto;
+    flex-grow: 1;
+}
+
+
+</style>
     <div class="container mt-3">
         <div class="d-flex flex-row">
             <img src="{{ victim.photo.url }}" alt="Victim_photo" width="320" height="320">
@@ -58,26 +106,22 @@ img{
                     <h5>ТУУЛГАН ЖЫЛЫ:</h5> <h5 style="color: #0c0604;" >{{ victim.date_of_birth }}</h5>
                 </li>
                 <li class="d-flex flex-row mb-1">
-                    <h5>ӨЛГӨН КҮНҮ:</h5><h5 style="color: #0c0604;">{{ victim.date_of_death }}</h5>
+                    <h5>КАЗА БОЛГОН КҮНҮ:</h5><h5 style="color: #0c0604;">{{ victim.date_of_death }}</h5>
                 </li>
                 <li class="d-flex flex-row mb-1">
                     <h5>ТУУЛГАН ЖЕРИ:</h5><h5 style="color: #0c0604;">{{ victim.place_of_birth }}</h5>
                 </li>
                 <li class="d-flex flex-row mb-1">
-                    <h5>ӨЛГӨН ЖЕРИ:</h5><h5 style="color: #0c0604;">{{ victim.place_of_death}}</h5>
+                    <h5>КАЗА БОЛГОН ЖЕРИ:</h5><h5 style="color: #0c0604;">{{ victim.place_of_death}}</h5>
                 </li>
                 <li class="d-flex flex-row mb-1">
-<<<<<<< HEAD
                     <h5>ИШМЕРДИГИ:</h5><h5 style="color: #0c0604;">{{ victim.occupation }}</h5>
                 </li>
                 <li class="d-flex flex-row mb-1">
-                    <h5>КОЮЛГАН АЙЫП:</h5><h5 style="color: #0c0604;">{{ victim.blame }}</h5>
-=======
                     <h5> ИШМЕРДИГИ:  </h5><h5 style="color: #0c0604;">  {{ victim.occupation }}</h5>
                 </li>
                 <li class="d-flex flex-row mb-1">
                     <h5> КОЮЛГАН АЙЫП:  </h5><h5 style="color: #0c0604;">   {{ victim.blame }}</h5>
->>>>>>> 335bf6e1cd2aa5a00ee9af56ebf4bae1f475912b
                 </li>
                 <li class="d-flex flex-row mb-1">
                     <h5>АКТАЛГАНДЫГЫ:</h5><h5 style="color: #0c0604;">{{ victim.rehabilitated }}</h5>
@@ -90,16 +134,15 @@ img{
                 </li>
             </ul>
         </div>
-        <a href="#" class="card-title fs-2 text-decoration-none" style="color: #611902;">{{ victim.first_name }} {{ victim.last_name }}</a>
-        <div class="d-flex justify-content-center flex-column align-items-center">
-
-            <p class="card-text fs-6" style="
-                    display: -webkit-box;
-                    -webkit-line-clamp: 5;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                    text-overflow: ellipsis;">
-                {{ victim.content }}</p>
+        <div>
+            <a href="#" class="card-title fs-2 text-decoration-none" style="color: #611902;">{{ victim.first_name }} {{ victim.last_name }}</a>
+        </div>
+        <div>
+            <div class="main-content">
+                <div class="d-flex justify-content-center flex-column align-items-center">
+                    <p class="card-text fs-6"> {{ victim.content }}</p>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -1,0 +1,115 @@
+{%extends 'base.html' %}
+{% block content %}
+<div class="contact">
+    <div class="container">
+      <ul class="responsive-table">
+        <li class="table-header">
+          <div class="col col-2">Аты</div>
+          <div class="col col-3">Электрондук почтасы</div>
+          <div class="col col-4">Телефон номери</div>
+        </li>
+        <li class="table-row">
+          <div class="col col-2" data-label="Аты">Элиза Алмазбек кызы</div>
+          <div class="col col-3" data-label="Электрондук почтасы">eliza.almazbekovna@chyrak.org.kg</div>
+          <div class="col col-4" data-label="Телефон номери">0312-98-45-87</div>
+        </li>
+        <li class="table-row">
+          <div class="col col-2" data-label="Аты">Автандил Төлөн</div>
+          <div class="col col-3" data-label="Электрондук почтасы">eshmambetolon@chyrak.org.kg</div>
+          <div class="col col-4" data-label="Телефон номери">0312-78-21-01</div>
+        </li>
+        <li class="table-row">
+          <div class="col col-2" data-label="Аты">Кантемир Жайчибек</div>
+          <div class="col col-3" data-label="Электрондук почтасы">kantemir.zhaichibek@chyrak.org.kg</div>
+          <div class="col col-4" data-label="Телефон номери">0312-45-56-87</div>
+        </li>
+        <li class="table-row">
+          <div class="col col-2" data-label="Аты">Chyrak</div>
+          <div class="col col-3" data-label="Электрондук почтасы">main@chyrak.org.kg</div>
+          <div class="col col-4" data-label="Телефон номери">0312-63-47-98</div>
+        </li>
+      </ul>
+    </div>
+</div>
+<style>
+.container {
+    padding-bottom: 30px;
+}
+small {
+  font-size: 0.5em;
+}
+
+.responsive-table > li {
+  border-radius: 3px;
+  padding: 25px 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.table-header {
+  background-color: #611902;
+  font-size: 14px;
+  text-transform: uppercase;
+letter-spacing: 0.03em;
+    color: #FFFFFF;
+}
+
+.table-row {
+  background-color: #FFFFFF;
+  box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+}
+
+.col-1 {
+  flex-basis: 10%;
+}
+
+.col-2 {
+  flex-basis: 40%;
+}
+
+.col-3 {
+  flex-basis: 25%;
+}
+
+.col-4 {
+  flex-basis: 25%;
+}
+
+@media all and (max-width: 767px) {
+  .header_emp {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .header_emp > h5 {
+    margin-left: 0;
+  }
+
+  .responsive-table > li {
+    flex-direction: column;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .col-1,
+  .col-2,
+  .col-3,
+  .col-4 {
+    flex-basis: 100%;
+  }
+
+  .col-1:before,
+  .col-2:before,
+  .col-3:before,
+  .col-4:before {
+    text-align: left;
+  }
+
+  .table-header {
+    display: none;
+  }
+}</style>
+{% endblock %}

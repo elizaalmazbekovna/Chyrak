@@ -40,10 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'registration.apps.RegistrationConfig',
-    'person.apps.PersonConfig',
     'search.apps.SearchConfig',
     'list_of_person.apps.ListOfPersonConfig',
-    'create_person',
+    'create_person.apps.CreatePersonConfig',
+    'person.apps.PersonConfig',
+    'contact.apps.ContactConfig',
 
     #registration apps
     'django.contrib.sites',

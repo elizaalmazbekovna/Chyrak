@@ -110,6 +110,9 @@
 
 
 .footer {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
     background-color: #3D3D3D;
     color: #FFFFFF;
     padding: 20px;

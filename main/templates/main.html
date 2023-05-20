@@ -1,15 +1,35 @@
 {% load static %}
 {% block style %}
-    <link rel="stylesheet" href="{%static 'main.css'%}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 {% endblock %}
 <body>
     <div class="intro">
         <div class="video">
             <img class="video_media" src="{% static 'img/img1.png' %}">
         </div>
+        <div class="intro-overlay d-flex justify-center align-center">
+            <div class="slider" style="display: flex; width: 100%">
+                {% for victim in victims %}
+                    <div class="slider__item">
+                        <div style="max-width: 190px;
+                                    margin: 0 auto;">
+                            <a href="{% url 'person_page' victim.id %}">
+                                <img class="slider_img" src="{{ victim.photo.url }}"
+                                     alt="{{ victim.first_name}} {{vistim.last_name }}"
+                                     style="border-radius: 50%;
+                                            width: 100%;
+                                            height: auto;"
+                                >
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
-
     <div class="navigation-wrap">
 		<div class="container">
 			<div class="row">
@@ -26,7 +46,7 @@
                                 <a class="nav-link" href="{% url 'create_person' %}">Адам кош</a>
                             </li>
                             <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                <a class="nav-link" href="#" role="tab">Байланыш</a>
+                                <a class="nav-link" href="{% url 'contact' %}" role="tab">Байланыш</a>
                             </li>
                         </ul>
 					</nav>
@@ -37,25 +57,25 @@
     <div class="main-info-block">
         <div class="info-block">
             <div class="text-block">
-                <p>Көпчүлүк тарыхчылардын пикиринде, Кыргызстандан 40 миңге чукул киши 1937-38-жылдардагы сталиндик репрессиянын курмандыгы болгон.
+                <p class="p-block">Көпчүлүк тарыхчылардын пикиринде, Кыргызстандан 40 миңге чукул киши 1937-38-жылдардагы сталиндик репрессиянын курмандыгы болгон.
                     Кыргызстан эгемендик алган жылдардан кийин 1938-жылы "улутчул, эл душманы" деген жалаа менен атылган 137 адамдын сөөгү көмүлгөн жер табылган. Сөөктөр кайра жерге берилип, ал жер "Ата-Бейит" деп аталды.
                Табылган сөөктөрдүн арасында атактуу жазуучу Чыңгыз Айтматовдун атасы Төрөкул Айтматов да болгон. "Ата-Бейит" деген атты жазуучу сунуштаган экен.
                "Ата-Бейит" КМШ өлкөлөрүнүн ичинен даректүү жана далилдер менен табылган репрессия курмандыктарынын бирден-бир көрүстөнү.</p>
-                <p>
+                <p class="p-block">
                     "Далай жылдан кийин атам ооруп калган учурунда эски окуяны эстеп, мага атайын ошону керез кылды эле. Дүйнө салып кетээрине көзү жеткен экен.
                     "Кызым баягы сасык жыт, түнкү жарыкта шоола чыккан дөбөдө кыргыздын каймактары жатат.
                     Убагы келип, жакшы заман болсо ошону айт кызым. Тууган-уругу зыркырап жүргөндүр" деди эле атам",-деп эскерет Бүбүйра апа.
                     Ал жерди казганда 30-40 смге жетпей биринчи баш сөөк табылган. Эң ынанымдуу далил - казган учурда табылган "Атууга чыккан соттун өкүмү тууралуу" билдирме болду.
                 </p>
-                <p>"Атылган кишилердин сөөгүн ирети жок эле, биринин үстүнөн бирин таштай беришиптир.
+                <p class="p-block">"Атылган кишилердин сөөгүн ирети жок эле, биринин үстүнөн бирин таштай беришиптир.
                     Анан баш сөөктөрүндө ок тешкен жери - биринчи далил болду",-дейт 137 адамдын сөөгү казып алуунун башында турган тарых илимдеринин кандидаты, коопсуздук кызматынын ардагери Болот Абдрахманов.
                     Анын кеңири эскерүүсүн төмөндөгү аудио материалдан угуңуз.
                     Кыргызстандын аймагында бир эле "Ата-Бейит" эле эмес, сыры ачылбаган ондогон мындай жайлар болушу мүмкүн экени, алар казуу, тактоо, изилдөө иштерин талап кылаарын тарыхчылар белгилеп жүрүшөт.
                 </p>
-                <p>1937-жылы 31-июлда СССР тарыхындагы эң үрөй учурган документке кол коюлган. Ал документ НКВДнын № 00447 жашыруун оперативдүү буйругу эле.
+                <p class="p-block">1937-жылы 31-июлда СССР тарыхындагы эң үрөй учурган документке кол коюлган. Ал документ НКВДнын № 00447 жашыруун оперативдүү буйругу эле.
                     Теориялык жактан алганда массалык террорго Сталиндин тезиси негиз болуп берген десе болот.
                     Ал 1928-жылы 9-июлда БКнын (Борбордук комитет) пленумунда "социализмге алып бара турган таптык күрөш солгундаган жок, кайра күчөп жатат" деп айткан.</p>
-                <p>
+                <p class="p-block">
                     1934-жылы 4-декабрда ленинграддык партуюмдун жетекчилеринин бири Сергей Кировдун өлүмүнөн үч күндөн кийин (иликтөөчүлөрдүн айтымында аны Сталин өзү уюштурган) СССР БАКтын (Борбордук аткаруу комитети) президиумунун токтому чыккан.
                     Токтомдо мамлекеттик кылмыш боюнча айыпталгандардын ишин тездетилген тартип менен кароо, кечирим берүү жана даттанууну кабыл албоо, соттун чечиминен кийин өлүм жазасына кесилгендердин өкүмү тез арада аткаруу каралган.
                 </p>
@@ -85,21 +105,32 @@
             </div>
         </div>
     </div>
-
-
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+      <script type="text/javascript">
+    $(document).ready(function(){
+        $('.slider').slick({
+          slidesToShow: 5,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 700,
+        });
+    });
+     </script>
     <script>
-        const input = document.getElementById("search-input");
-        const searchBtn = document.getElementById("search-btn");
-        const expand = () => {
-          searchBtn.classList.toggle("close");
-          input.classList.toggle("square");
-        };
-        searchBtn.addEventListener("click", expand);
-        const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('open');
-});
+        var pBlocks = document.querySelectorAll('.p-block');
+        function handleScroll() {
+          pBlocks.forEach(function(pBlock) {
+            var position = pBlock.getBoundingClientRect();
+            if (position.top < window.innerHeight && position.bottom >= 0) {
+              pBlock.classList.add('element-show');
+            } else {
+              pBlock.classList.remove('element-show');
+            }
+          });
+        }
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
     </script>
 </body>
