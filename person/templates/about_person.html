@@ -69,9 +69,9 @@ img {
 .card-text {
     font-size: 0.75rem;
     display: -webkit-box;
-    -webkit-line-clamp: 5;
+    {#-webkit-line-clamp: 5;#}
     -webkit-box-orient: vertical;
-    overflow: hidden;
+    {#overflow: hidden;#}
     text-overflow: ellipsis;
 }
 
@@ -98,7 +98,7 @@ img {
 
 
 </style>
-    <div class="container mt-3">
+    <div class="container mt-3 mb-5">
         <div class="d-flex flex-row">
             <img src="{{ victim.photo.url }}" alt="Victim_photo" width="320" height="320">
             <ul style="color: #611902; list-style: none;">

@@ -4,34 +4,32 @@
     <link rel="stylesheet" type="text/css" href="{% static 'list_of_person.css' %}"/>
     <script src="{% static 'static/script.js' %}"></script>
 <div>
-    <div class="container d-flex justify-content-center flex-column align-items-center">
-        <div class="d-flex justify-content-center flex-row mt-3 align-items-center">
-
+    <div class="container d-flex justify-content-center flex-column align-items-center" style="width: 83%;">
+        <div class="d-flex flex-row mt-3 me-auto" style="max-width: 500px;">
+            <form method="GET" action="{% url 'search' %}" style="width: 30vw;">
+                <input type="search" id="searchbox" name="q" value="{{ request.GET.q }}" placeholder="Издеңиз..." aria-label="Search">
+            </form>
             <form action="{% url 'list_of_person' %}" method="get">
-
-            <div id="sort_option" class="sort-option">
-              <div class="option {% if sort_option == 'first_name' %}selected{% endif %}" data-value="first_name">
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="36" fill="currentColor"
-                class="bi bi-filter-left me-3" viewBox="0 0 16 16">
-                  <path d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-                </svg>
-              </div>
-              <div class="option {% if sort_option == '-first_name' %}selected{% endif %}" data-value="-first_name">
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="36" fill="currentColor"
-                class="bi bi-filter-left me-3" viewBox="0 0 16 16">
-                  <path d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-                </svg>
-              </div>
-            </div>
+                <div id="sort_option" class="sort-option ms-2">
+                    <div class="option {% if sort_option == 'first_name' %}selected{% endif %} ms-1" data-value="first_name" onclick="selectSortOption('first_name')">
+                        <object data="{% static 'img/icons/1.svg' %}" width="20" height="20"></object>
+                    </div>
+                    <div class="option {% if sort_option == '-first_name' %}selected{% endif %}" data-value="-first_name" onclick="selectSortOption('-first_name')">
+                        <object data="{% static 'img/icons/2.svg' %}" width="20" height="20"></object>
+                    </div>
+                </div>
+                <input type="hidden" id="sort_option_input" name="sort_option" value="{{ sort_option }}">
             </form>
-
-            <form method="GET" action="{% url 'search' %}"class=" " style="width: 30vw;">
-                <input type="search" name="q" value="{{ request.GET.q }}" class="form-control form-control-dark" placeholder="Издеңиз..." aria-label="Search">
-            </form>
+        <script>
+  function selectSortOption(option) {
+    document.getElementById('sort_option_input').value = option;
+    document.forms[0].submit();
+  }
+</script>
         </div>
         <div class="container d-flex justify-content-center flex-column align-items-center">
             {% for person in page_obj %}
-                <div class="card border-0 mt-3 " style="width: 75%;">
+                <div class="card border-0 mt-3 " style="width: 93%;">
                     <div class="card-body">
                         <a href="{% url 'person_page' person.id %}" class="card-title fs-2 text-decoration-none" style="color: #611902; text-transform: uppercase; font-family: sans-serif">
                             {{ person.first_name }}
@@ -42,20 +40,16 @@
                         -webkit-line-clamp: 5;
                         -webkit-box-orient: vertical;
                         overflow: hidden;
-                        text-overflow: ellipsis;">
+                        text-overflow: ellipsis;
+                        font-family: 'sans-serif';">
                             {{ person.content}}
                         </p>
                     </div>
                 </div>
             {% endfor %}
-            </div>
         </div>
-        <div class="pagination">
+        <div class="pagination" style="margin-bottom: 100px">
             <ul>
-                {% if page_obj.has_previous %}
-                <li class="prev disabled"><a href="?page={{ page_obj.previous_page_number }}">&lt;</a></li>
-                {% endif %}
-
                 {% for num in page_obj.paginator.page_range %}
                     {% if page_obj.number == num %}
                         <li class="active">
@@ -69,13 +63,6 @@
                         </li>
                     {% endif %}
                 {% endfor %}
-
-            {% if page_obj.has_next %}
-                <li class="next">
-                    <a href="{{ page.next_page_number }}">
-                    </a>
-                </li>
-            {% endif %}
             </ul>
         </div>
     </div>
