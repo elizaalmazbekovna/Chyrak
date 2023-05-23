@@ -18,31 +18,29 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="navigation-wrap">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <nav class="navbar navbar-expand-md navbar-light">
-                            <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/img1.jpg' %}" alt=""></a>
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            </div>
-                            <ul class="navbar-nav ml-auto py-4 py-md-0">
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="{% url 'list_of_person' %}">Тизме</a>
-                                </li>
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="{% url 'create_person' %}">Адам кош</a>
-                                </li>
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="{% url 'contact' %}" role="tab">Байланыш</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="navigation-wrap">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav class="navbar navbar-expand-md navbar-light">
+						<a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/img1.jpg' %}" alt=""></a>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						</div>
+                        <ul class="navbar-nav ml-auto py-4 py-md-0">
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                <a class="nav-link" href="{% url 'list_of_person' %}">Тизме</a>
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                <a class="nav-link" href="{% url 'create_person' %}">Адам кош</a>
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                <a class="nav-link" href="{% url 'contact' %}" role="tab">Байланыш</a>
+                            </li>
+                        </ul>
+					</nav>
+				</div>
+			</div>
+		</div>
     </div>
     {%block content %}
     {%endblock%}
