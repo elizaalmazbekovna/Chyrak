@@ -293,6 +293,15 @@
   }
 }
 
+.search-sort-box {
+    max-width: auto;
+}
+
+.search-box {
+    max-width: 1080px;
+    margin: 0;
+}
+
 #searchbox {
     border-bottom-width: 3px;
     border-top: none;

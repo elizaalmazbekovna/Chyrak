@@ -1,156 +1,147 @@
-
 {% extends 'base.html' %}
 {% block content %}
-
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'person.css' %}"/>
-
-
-
-
-    <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
-
-<body>
-
-<hr>
-<style>
-hr {
-  display: block;
-  margin-top: 0;
-  margin-bottom: 0.5em;
-  margin-left: auto;
-  margin-right: auto;
-  border-style: inset;
-  border-width: 1px;
-  text-align: center;
-  width: 1200px;
-}
-
-@media screen and (max-width: 768px) {
-  hr {
-    width: 90%; /* Измените ширину по вашему усмотрению */
-  }
-}
-
-img {
-  margin-left: 0;
-}
-
-@media screen and (max-width: 768px) {
-  img {
-    margin-left: 30px; /* Измените отступ по вашему усмотрению */
-  }
-}
-
-.card-title {
-    font-size: 2rem;
-    text-decoration: none;
-    color: #611902;
-}
-
-.card-text {
-    font-size: 0.75rem;
-    display: -webkit-box;
-    {#-webkit-line-clamp: 5;#}
-    -webkit-box-orient: vertical;
-    {#overflow: hidden;#}
-    text-overflow: ellipsis;
-}
-
-.d-flex {
-    display: flex;
-}
-
-.justify-content-center {
-    justify-content: center;
-}
-
-.flex-column {
-    flex-direction: column;
-}
-
-.align-items-center {
-    align-items: center;
-}
-
-.main-content {
-    height: auto;
-    flex-grow: 1;
-}
-
-
-</style>
-    <div class="container mt-3 mb-5">
-        <div class="d-flex flex-row">
-            <img src="{{ victim.photo.url }}" alt="Victim_photo" width="320" height="320">
-            <ul style="color: #611902; list-style: none;">
-                <li class="d-flex flex-row mb-1">
-                    <h5>ТУУЛГАН ЖЫЛЫ:</h5> <h5 style="color: #0c0604;" >{{ victim.date_of_birth }}</h5>
-                </li>
-                <li class="d-flex flex-row mb-1">
-                    <h5>КАЗА БОЛГОН КҮНҮ:</h5><h5 style="color: #0c0604;">{{ victim.date_of_death }}</h5>
-                </li>
-                <li class="d-flex flex-row mb-1">
-                    <h5>ТУУЛГАН ЖЕРИ:</h5><h5 style="color: #0c0604;">{{ victim.place_of_birth }}</h5>
-                </li>
-                <li class="d-flex flex-row mb-1">
-                    <h5>КАЗА БОЛГОН ЖЕРИ:</h5><h5 style="color: #0c0604;">{{ victim.place_of_death}}</h5>
-                </li>
-                <li class="d-flex flex-row mb-1">
-                    <h5>ИШМЕРДИГИ:</h5><h5 style="color: #0c0604;">{{ victim.occupation }}</h5>
-                </li>
-                <li class="d-flex flex-row mb-1">
-                    <h5> ИШМЕРДИГИ:  </h5><h5 style="color: #0c0604;">  {{ victim.occupation }}</h5>
-                </li>
-                <li class="d-flex flex-row mb-1">
-                    <h5> КОЮЛГАН АЙЫП:  </h5><h5 style="color: #0c0604;">   {{ victim.blame }}</h5>
-                </li>
-                <li class="d-flex flex-row mb-1">
-                    <h5>АКТАЛГАНДЫГЫ:</h5><h5 style="color: #0c0604;">{{ victim.rehabilitated }}</h5>
-                </li>
-                <li class="d-flex flex-row mb-1">
-                    <h5>ЖУБАЙЫ:</h5><h5 style="color: #0c0604;">{{ victim.bedfellow }}</h5>
-                </li>
-                <li class="d-flex flex-row mb-1">
-                    <h5>БАЛДАРЫ:</h5><h5 style="color: #0c0604;">{{ victim.children }}</h5>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <a href="#" class="card-title fs-2 text-decoration-none" style="color: #611902;">{{ victim.first_name }} {{ victim.last_name }}</a>
-        </div>
-        <div>
-            <div class="main-content">
-                <div class="d-flex justify-content-center flex-column align-items-center">
-                    <p class="card-text fs-6"> {{ victim.content }}</p>
-                </div>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'about_person.css' %}"/>
+<div class="main-container">
+    <div class="history-edit-box">
+        <div class="his-ed-box">
+            <div class="his-ed-box-el">
+                <span class="fa fa-star" style="margin-right: 20px;"></span>
+                <a href="#" style="text-decoration: none; font-weight: bold; color: #611902; font-size: 12px; margin-right: 20px; text-transform: uppercase;">Оңдоо</a>
+                <a href="#" style="text-decoration: none; font-weight: bold; color: #3D3D3D; font-size: 12px; text-transform: uppercase;">Тарыхын көр</a>
             </div>
         </div>
     </div>
+    <div class="content-container">
+        <div class="d-flex flex-column">
+            <div class="d-flex flex-row">
+                <img class="img_victim" src="{{ victim.photo.url }}" alt="Victim_photo">
+                <div class="main-info-box">
+                    <ul class="ul-class">
+                        <li class="d-flex flex-row mb-1">
+                            <h5 class="first-h5">
+                                Туулган күнү:
+                            </h5>
+                            <h5 class="second-h5" >
+                                {{ birth_date }}
+                            </h5>
+                        </li>
+                        <li class="d-flex flex-row mb-1">
+                            <h5 class="first-h5">
+                                Каза болгон күнү:
+                            </h5>
+                            <h5 class="second-h5" >
+                                {{ death_date }}
+                            </h5>
+                        </li>
+                        <li class="d-flex flex-row mb-1">
+                            <h5 class="first-h5">
+                                Туулган жери:
+                            </h5>
+                            <h5 class="second-h5" >
+                                {{ victim.place_of_birth }}
+                            </h5>
+                        </li>
+                        <li class="d-flex flex-row mb-1">
+                            <h5 class="first-h5">
+                                Каза болгон жери:
+                            </h5>
+                            <h5 class="second-h5" >
+                                {{ victim.place_of_death }}
+                            </h5>
+                        </li>
+                        <li class="d-flex flex-row mb-1">
+                            <h5 class="first-h5">
+                                Улуту:
+                            </h5>
+                            <h5 class="second-h5" >
+                                {{ victim.nationality }}
+                            </h5>
+                        </li>
+                        <li class="d-flex flex-row mb-1">
+                            <h5 class="first-h5">
+                                Ишмердиги:
+                            </h5>
+                            <h5 class="second-h5" >
+                                {{ victim.occupation }}
+                            </h5>
+                        </li>
+                        <li class="d-flex flex-row mb-1">
+                            <h5 class="first-h5">
+                                Коюлган айып:
+                            </h5>
+                            <h5 class="second-h5" >
+                                {{ victim.blame }}
+                            </h5>
+                        </li>
+                        <li class="d-flex flex-row mb-1">
+                            <h5 class="first-h5">
+                                Акталгандыгы:
+                            </h5>
+                            <h5 class="second-h5" >
+                                {{ reh }}
+                            </h5>
+                        </li>
+                        <li class="d-flex flex-row mb-1">
+                            <h5 class="first-h5">
+                                Жубайы:
+                            </h5>
+                            <h5 class="second-h5" >
+                                {{ victim.bedfellow }}
+                            </h5>
+                        </li>
+                        <li class="d-flex flex-row mb-1">
+                            <h5 class="first-h5">
+                                Балдары:
+                            </h5>
+                            <h5 class="second-h5" >
+                                {{ victim.children }}
+                            </h5>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="name-box">
+                <p class="name-box-p">
+                    {{ victim.first_name }} {{ victim.last_name }}
+                </p>
+            </div>
+            <div class="main-info-block">
+                <div class="info-block">
+                    <div class="text-block">
+                        {% for paragraph in paragraphs %}
+                            <p class="p-block">
+                                {% for sentence in paragraph %}
+                                    {{ sentence }}
+                                {% endfor %}
+                            </p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+<!--            <div class="paragraphs-box">-->
+<!--                <div class="main-content">-->
+<!--                    <div class="d-flex justify-content-center flex-column align-items-center">-->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
-
-{%endblock%}
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</div>
+<script>
+        var pBlocks = document.querySelectorAll('.p-block');
+        function handleScroll() {
+          pBlocks.forEach(function(pBlock) {
+            var position = pBlock.getBoundingClientRect();
+            if (position.top < window.innerHeight && position.bottom >= 0) {
+              pBlock.classList.add('element-show');
+            } else {
+              pBlock.classList.remove('element-show');
+            }
+          });
+        }
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+</script>
+{% endblock %}
