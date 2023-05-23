@@ -1,4 +1,8 @@
-<h1>{{ user.username }}'s Profile</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<!-- <h1>{{ user.username }}'s Profile</h1>
 
 <hr>
 
@@ -8,8 +12,69 @@
         <li>{{ victim.first_name }} - {{ victim.last_name }}</li>
         <a href="{% url 'edit_person' person_id=victim.pk %}">Edit</a>
         <a href="{% url 'delete_person' person_id=victim.pk %}">Delete</a>
-        <!-- Display other victim information as needed -->
+         Display other victim information as needed
     {% empty %}
         <li>No victims found.</li>
     {% endfor %}
-</ul>
+</ul> -->
+<style>
+    .file-button {
+        width: 75px;
+        background-color: #3D3D3D;
+        color: #FFFFFF;
+        padding: 0;
+        font-size: 12px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        border-radius: 0 40px 0 40px;
+        cursor: pointer;
+        box-sizing: border-box;
+    }
+    .dd{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        
+    }
+</style>
+<div class="container">
+    <h3 style="color: #611902;">Колдонуучу: {{user.username}}</h3>
+    <h6 style="color: #611902;">1904.01019@manas.edu.kg</h6>
+    <HR></HR>
+</div>
+<div class="container d-flex justify-content-center flex-column align-items-center">
+    {% for victim in victims %}
+    <div class="card border-0 mt-3 " style="width: 93%;">
+        <div class="card-body">
+            <div class="dd">
+                <a href="{% url 'person_page' victim.id %}" class="card-title fs-2 text-decoration-none"
+                    style="color: #611902; text-transform: uppercase; font-family: sans-serif">
+                    {{ victim.first_name }}
+                    {{ victim.last_name }}
+                </a>
+                <div style="padding-top: 1vh;">
+                    <button class="file-button" type="button">
+                        Edit
+                    </button>
+                    <button class="file-button" type="button">
+                        Delete
+                    </button>
+                </div>
+            </div>
+
+            <p class="card-text fs-6" style="
+                display: -webkit-box;
+                -webkit-line-clamp: 5;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-family: 'sans-serif';
+                text-align: justify;">
+                {{ victim.content}}
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
