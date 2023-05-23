@@ -7,6 +7,6 @@ Victim = person.Victim
 
 
 def index(request):
-    victims = Victim.objects.all()
+    victims = Victim.objects.all().order_by('date_of_publish')[:15]
     context = {'victims': victims}
     return render(request, 'main.html', context)

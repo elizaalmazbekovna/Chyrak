@@ -1,72 +1,89 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
 {% block content %}
 {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'search_page.css' %}"/>
-    <div>
-        <div class="container d-flex justify-content-center flex-column align-items-center" style="width: 83%;">
-            <div class="d-flex flex-row mt-3 me-auto" style="max-width: 500px;">
+
+<div>
+    <div class="container d-flex justify-content-center flex-column align-items-center" style="width: 83%;">
+        <div class="d-flex flex-row" style="max-width: 500px;">
+            <div class="search-box">
                 <form method="GET" action="{% url 'search' %}" style="width: 30vw;">
                     <input type="search" id="searchbox" name="q" value="{{ request.GET.q }}" placeholder="Издеңиз..." aria-label="Search">
                 </form>
-                <form action="{% url 'list_of_person' %}" method="get">
-                    <div id="sort_option" class="sort-option ms-2">
-                      <div class="option {% if sort_option == 'first_name' %}selected{% endif %} ms-1" data-value="first_name">
-                        <object data={% static 'img/icons/1.svg' %} width="20" height="20"></object>
-                      </div>
-                      <div class="option {% if sort_option == '-first_name' %}selected{% endif %}" data-value="-first_name">
-                        <object data={% static 'img/icons/2.svg' %} width="20" height="20"> </object>
-                      </div>
-                    </div>
-                </form>
             </div>
+            <form id="sortForm" action="{% url 'list_of_person' %}" method="get">
+                <div id="sort_option" class="sort-option ms-2">
+                    <div class="option {% if sort_option == 'first_name' %}selected{% endif %} ms-1" data-value="first_name">
+                        <img src="{% static 'img/icons/1.svg' %}" width="20" height="20">
+                    </div>
+                    <div class="option {% if sort_option == '-first_name' %}selected{% endif %}" data-value="-first_name">
+                        <img src="{% static 'img/icons/2.svg' %}" width="20" height="20">
+                    </div>
+                </div>
+                <input type="hidden" name="sort_option" id="sort_option_input" value="{{ sort_option }}">
+            </form>
         </div>
-        {% if results %}
-            <div class="container d-flex justify-content-center flex-column align-items-center">
-                {% for person in results %}
-                    <div class="card border-0 mt-3 " style="width: 83%;">
-                        <div class="card-body">
-                            <a href="{% url 'person_page' person.id %}" class="card-title fs-2 text-decoration-none" style="color: #611902; text-transform: uppercase; font-family: sans-serif">
-                                {{ person.first_name }}
-                                {{ person.last_name }}
-                            </a>
-                            <p class="card-text fs-6" style="
-                            display: -webkit-box;
-                            -webkit-line-clamp: 5;
-                            -webkit-box-orient: vertical;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            font-family: 'sans-serif';">
-                                {{ person.content}}
-                            </p>
-                        </div>
-                    </div>
+        {% if page_obj.has_other_pages %}
+        <div class="container d-flex justify-content-center flex-column align-items-center">
+            {% for person in page_obj %}
+            <div class="card border-0 mt-3 " style="width: 93%;">
+                <div class="card-body">
+                    <a href="{% url 'person_page' person.id %}" class="card-title fs-2 text-decoration-none" style="color: #611902; text-transform: uppercase; font-family: sans-serif">
+                        {{ person.first_name }}
+                        {{ person.last_name }}
+                    </a>
+                    <p class="card-text fs-6" style="
+                        display: -webkit-box;
+                        -webkit-line-clamp: 5;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        font-family: 'sans-serif';">
+                        {{ person.content}}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="pagination" style="margin-bottom: 100px">
+            <ul>
+                {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                <li class="active">
+                    <a href="?page={{ num }}">{{ num }}</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="?page={{ num }}">
+                        {{ num }}
+                    </a>
+                </li>
+                {% endif %}
                 {% endfor %}
-            </div>
-            <div class="pagination" style="margin-bottom: 100px">
-                <ul>
-                    {% for num in page_obj.paginator.page_range %}
-                        {% if page_obj.number == num %}
-                            <li class="active">
-                                <a href="?page={{ num }}">{{ num }}</a>
-                            </li>
-                        {% else %}
-                            <li>
-                                <a href="?page={{ num }}">
-                                    {{ num }}
-                                </a>
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </div>
-            </div>
+            </ul>
+        </div>
         {% else %}
-            <div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 40vh;">
-                <h2 style="color: #5D5D5D; opacity: 0.6">Жыйынтык табылган жок</h2>
-                <p style="color: #5D5D5D; opacity: 0.6">Туура киргизгениңизди текшерип, кайра аракет кылыңыз же <a style='color: #3D3D3D; font-weight: bold' href="http://127.0.0.1:8000/person/">негизги тизмеге</a> өтүңүз</p>
-            </div>
+        <div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 40vh;">
+            <h2 style="color: #5D5D5D; opacity: 0.6">Жыйынтык табылган жок</h2>
+            <p style="color: #5D5D5D; opacity: 0.6">Туура киргизгениңизди текшерип, кайра аракет кылыңыз же <a style='color: #3D3D3D; font-weight: bold' href="http://127.0.0.1:8000/person/">негизги тизмеге</a> өтүңүз</p>
+        </div>
         {% endif %}
     </div>
+</div>
+
+    <script>
+      const options = document.querySelectorAll('.option');
+
+      options.forEach(option => {
+        option.addEventListener('click', () => {
+          const sortOption = option.getAttribute('data-value');
+          document.getElementById('sort_option_input').value = sortOption;
+          const currentPageUrl = new URL(window.location.href);
+          currentPageUrl.searchParams.set('sort_option', sortOption);
+          window.location.href = currentPageUrl.href;
+        });
+      });
+    </script>
 
 
 {% endblock %}

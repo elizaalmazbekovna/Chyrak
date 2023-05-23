@@ -28,7 +28,6 @@ class Victim(models.Model):
     up_vote = models.IntegerField(default=0)
     is_proven = models.BooleanField(default=False)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    x = models.CharField(max_length=100,default="", blank=True, null=True)
 
 
     def __str__(self):
@@ -38,9 +37,9 @@ class EditingHistory(models.Model):
         victim = models.ForeignKey(Victim, on_delete=models.CASCADE)
         edited_by = models.ForeignKey(User, on_delete=models.CASCADE)
         date_of_editing = models.DateField(default=timezone.now)
-        letters_edited = models.IntegerField()
-        before_edit_content = models.TextField()
-        after_edit_content = models.TextField()
+        letters_edited = models.IntegerField(default=0)
+        before_edit_content = models.TextField(default="")
+        after_edit_content = models.TextField(default="")
 
         def letters_edited(self):
             return calculate_letters_edited(self.before_edit_content, self.after_edit_content)
