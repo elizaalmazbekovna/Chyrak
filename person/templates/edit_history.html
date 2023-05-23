@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Edit History for {{ victim.first_name }} {{ victim.last_name }}</h1>
+
+  {% if editing_history %}
+    <ul>
+      {% for history in editing_history %}
+        <li>
+          <strong>Edited By:</strong> {{ history.edited_by }}<br>
+          <strong>Date of Editing:</strong> {{ history.date_of_editing }}<br>
+          <strong>Letters Edited:</strong> {{ history.letters_edited }}<br>
+          <strong>Before Edit:</strong> {{ history.before_edit_content }}<br>
+          <strong>After Edit:</strong> {{ history.after_edit_content }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No editing history available for this person.</p>
+  {% endif %}
+{% endblock %}

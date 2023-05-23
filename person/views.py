@@ -21,6 +21,7 @@ def person_page(request, person_id):
         12: 'Бештин айы'
     }
 
+
     birth_date = "{day}-{month}, {year}-жыл".format(
         day = victim.date_of_birth.day,
         month = month_names_kyrgyz[victim.date_of_birth.month],
@@ -54,6 +55,7 @@ def person_page(request, person_id):
     else:
         reh = 'Акталбай калган'
 
+
     context = {
         'victim': victim,
         'person_id': person_id,
@@ -61,6 +63,22 @@ def person_page(request, person_id):
         'death_date': death_date,
         'reh': reh,
         'paragraphs': paragraphs,
+
     }
 
     return render(request, 'about_person.html', context)
+
+
+
+def edit_history(request, person_id):
+    victim = get_object_or_404(Victim, id=person_id)
+
+    # Fetch the editing history for the person
+    editing_history = victim.editinghistory_set.order_by('-date_of_editing')
+
+    context = {
+        'victim': victim,
+        'editing_history': editing_history,
+    }
+
+    return render(request, 'edit_history.html', context)
