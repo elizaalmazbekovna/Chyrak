@@ -8,10 +8,9 @@
       {% for history in editing_history %}
         <li>
           <strong>Edited By:</strong> {{ history.edited_by }}<br>
-          <strong>Date of Editing:</strong> {{ history.date_of_editing }}<br>
+          <strong>Date of Editing:</strong> {{ date_of_edit }}<br>
           <strong>Letters Edited:</strong> {{ history.letters_edited }}<br>
-          <strong>Before Edit:</strong> {{ history.before_edit_content }}<br>
-          <strong>After Edit:</strong> {{ history.after_edit_content }}
+
         </li>
       {% endfor %}
     </ul>

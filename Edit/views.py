@@ -1,10 +1,6 @@
-
-from create_person.forms import PersonForm
 from django.shortcuts import render, redirect, get_object_or_404
-from person.models import Victim
-
-
-from django.utils.html import strip_tags
+from create_person.forms import PersonForm
+from person.models import Victim, EditingHistory
 
 def edit_person(request, person_id):
     if request.user.is_authenticated:
@@ -13,17 +9,18 @@ def edit_person(request, person_id):
         if request.method == 'POST':
             form = PersonForm(request.POST, request.FILES, instance=person)
             if form.is_valid():
-                old_content = strip_tags(person.content)  # Get the previous content
-                form.save()
-                new_content = strip_tags(form.cleaned_data['content'])  # Get the updated content
+                before_edit_content = person.content
+                person = form.save()
+                after_edit_content = person.content
 
-                # Calculate the number of letters edited
-                num_letters_edited = abs(len(old_content) - len(new_content))
-
-                # Update the person object with the edited content and number of letters edited
-                person.before_edit_content = old_content
-                person.after_edit_content = new_content
-                person.save()
+                # Create a new EditingHistory entry
+                editing_history = EditingHistory(
+                    edited_by=request.user,  # Assign the User instance
+                    before_edit_content=before_edit_content,
+                    after_edit_content=after_edit_content,
+                    victim=person
+                )
+                editing_history.save()
 
                 return redirect('person_page', person_id=person_id)
         else:

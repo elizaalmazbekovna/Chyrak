@@ -1,5 +1,7 @@
+from django.contrib.auth.models import User
 from django.db import models
 from datetime import datetime
+from django.utils import timezone
 
 from Profile.models import Profile
 
@@ -14,7 +16,7 @@ class Victim(models.Model):
     nationality = models.TextField(default='', blank=True, null=True)
     blame = models.TextField(blank=True, null=True)
     rehabilitated = models.CharField(max_length=30, blank=True, null=True)
-    occupation = models.CharField(max_length=30, blank=True, null=True)
+    occupation = models.TextField( blank=True, null=True)
     bedfellow = models.CharField(max_length=30, blank=True, null=True)
     children = models.CharField(max_length=30, blank=True, null=True)
     photo = models.ImageField(upload_to='images/', blank=True, null=True)
@@ -25,12 +27,33 @@ class Victim(models.Model):
     date_of_publish = models.DateField(default=datetime.now)
     up_vote = models.IntegerField(default=0)
     is_proven = models.BooleanField(default=False)
-    before_edit_content = models.TextField(default="")
-    after_edit_content = models.TextField(default="")
-    date_of_editing = models.DateField(default=datetime.now)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     x = models.CharField(max_length=100,default="", blank=True, null=True)
 
 
     def __str__(self):
         return self.first_name + " " + self.last_name
+
+class EditingHistory(models.Model):
+        victim = models.ForeignKey(Victim, on_delete=models.CASCADE)
+        edited_by = models.ForeignKey(User, on_delete=models.CASCADE)
+        date_of_editing = models.DateField(default=timezone.now)
+        letters_edited = models.IntegerField()
+        before_edit_content = models.TextField()
+        after_edit_content = models.TextField()
+
+        def letters_edited(self):
+            return calculate_letters_edited(self.before_edit_content, self.after_edit_content)
+
+        def save(self, *args, **kwargs):
+            self.letters_edited = calculate_letters_edited(self.before_edit_content, self.after_edit_content)
+            super().save(*args, **kwargs)
+
+
+def calculate_letters_edited(before_content, after_content):
+    """
+    Calculates the number of letters edited between the before and after content.
+    """
+    return abs(len(after_content) - len(before_content))
+
+

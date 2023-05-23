@@ -1,7 +1,8 @@
 import datetime
 import locale
 from django.shortcuts import render, get_object_or_404
-from .models import Victim
+from .models import Victim, EditingHistory
+
 
 def person_page(request, person_id):
     victim = get_object_or_404(Victim, id=person_id)
@@ -66,19 +67,42 @@ def person_page(request, person_id):
 
     }
 
+
+
     return render(request, 'about_person.html', context)
 
 
 
 def edit_history(request, person_id):
     victim = get_object_or_404(Victim, id=person_id)
+    editing_history = EditingHistory.objects.filter(victim=victim)
 
-    # Fetch the editing history for the person
-    editing_history = victim.editinghistory_set.order_by('-date_of_editing')
+    month_names_kyrgyz = {
+        1: 'Үчтүн айы',
+        2: 'Бирдин айы',
+        3: 'Жалган Куран',
+        4: 'Чын Куран',
+        5: 'Бугу',
+        6: 'Кулжа',
+        7: 'Теке',
+        8: 'Баш Оона',
+        9: 'Аяк Оона',
+        10: 'Тогуздун айы',
+        11: 'Жетинин айы',
+        12: 'Бештин айы'
+    }
+
+    date_of_edit = "{day}-{month}, {year}-жыл".format(
+        day = editing_history.date_of_editing.day,
+        month = month_names_kyrgyz[editing_history.date_of_editing.month],
+        year = editing_history.date_of_editing.year
+    )
+
 
     context = {
         'victim': victim,
         'editing_history': editing_history,
+        'date_of_edit': date_of_edit,
     }
 
     return render(request, 'edit_history.html', context)
