@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'create_person.apps.CreatePersonConfig',
     'person.apps.PersonConfig',
     'contact.apps.ContactConfig',
+    'Profile.apps.ProfileConfig',
+    'Edit.apps.EditConfig',
+    'Remove.apps.RemoveConfig',
 
     #registration apps
     'django.contrib.sites',

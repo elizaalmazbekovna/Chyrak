@@ -6,7 +6,7 @@
 {#        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">#}
 
 <div>
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="container w-50">
             <div class="row mt-3">
@@ -58,23 +58,35 @@
                 </div>
             </div>
             <div class="row mt-3">
+
                 <div class="col">
-                    <button class="file-button" onclick="document.getElementById('file-input').click()">Сүрөт жүктө</button>
-                    <input id="file-input" type="file" style="display:none" name="{{ form.photo.name }}">
-                </div>
+
+                    <button class="file-button" type="button" onclick="document.getElementById('file-input').click()">
+                        Сүрөт жүктө
+                    </button>
+                     <input id="file-input" type="file" style="display:none" name="{{ form.photo.name }}">
+                    </div>
                 <div class="col">
                     <input class="form-control" id="exampleFormControlInput1" name="{{ form.desc_of_photo.name }}" placeholder="Сүрөттүн ачыктамасы">
                 </div>
             </div>
-            <div class="row mt-3">
-                <div class="col">
-                    <button class="file-button" onclick="document.getElementById('file-input').click()">Файл жүктө</button>
-                    <input id="file-input" type="file" style="display:none" name="{{ form.file.name }}">
-                </div>
-                <div class="col">
-                    <input class="form-control" id="exampleFormControlInput1" name="{{ form.desc_of_file.name }}" placeholder="Файлдын ачыктамасы">
-                </div>
-            </div>
+{#            <div class="row mt-3">#}
+{#                <div class="col">#}
+{#                    <button class="file-button" onclick="document.getElementById('file-input').click()">Файл жүктө</button>#}
+{#                    <input id="file-input" type="file" style="display:none" name="{{ form.file.name }}">#}
+{#                </div>#}
+{#                <div class="col">#}
+{##}
+{#                    <button class="file-button" type="button" onclick="document.getElementById('file-input').click()">#}
+{#                      Файл жүктө#}
+{#                    </button>#}
+{#                     <input id="file-input" type="file" style="display:none" name="{{ form.file.name }}">#}
+{##}
+{#                    </div>#}
+{#                <div class="col">#}
+{#                    <input class="form-control" id="exampleFormControlInput1" name="{{ form.desc_of_file.name }}" placeholder="Файлдын ачыктамасы">#}
+{#                </div>#}
+{#            </div>#}
             <div class="row mt-3">
                 <div class="col">
                     <textarea class="content-area"  name="{{ form.content.name }}" placeholder="Кененирээк маалымат"></textarea>

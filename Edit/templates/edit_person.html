@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'add_person.css' %}">
+
+<div>
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container w-50">
+      <div class="row mt-3">
+        <div class="col">
+          <input class="form-control" id="id_first_name" name="first_name" value="{{ form.first_name.value }}" placeholder="Аты">
+        </div>
+        <div class="col">
+          <input class="form-control" id="id_last_name" name="last_name" value="{{ form.last_name.value }}" placeholder="Атасынын аты">
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <input class="form-control" id="id_date_of_birth" name="date_of_birth" value="{{ form.date_of_birth.value }}" placeholder="Туулган күнү">
+        </div>
+        <div class="col">
+          <input class="form-control" id="id_date_of_death" name="date_of_death" value="{{ form.date_of_death.value }}" placeholder="Каза тапкан күнү">
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <input class="form-control" id="id_place_of_birth" name="place_of_birth" value="{{ form.place_of_birth.value }}" placeholder="Туулган жери">
+        </div>
+        <div class="col">
+          <input class="form-control" id="id_place_of_death" name="place_of_death" value="{{ form.place_of_death.value }}" placeholder="Каза тапкан жери">
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <input class="form-control" id="id_nationality" name="nationality" value="{{ form.nationality.value }}" placeholder="Улуту">
+        </div>
+        <div class="col">
+          <input class="form-control" id="id_occupation" name="occupation" value="{{ form.occupation.value }}" placeholder="Ишмердиги">
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <input class="form-control" id="id_blame" name="blame" value="{{ form.blame.value }}" placeholder="Коюлган айып">
+        </div>
+        <div class="col">
+          <input class="form-control" id="id_rehabilitated" name="rehabilitated" value="{{ form.rehabilitated.value }}" placeholder="Акталгандыгы">
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <input class="form-control" id="id_bedfellow" name="bedfellow" value="{{ form.bedfellow.value }}" placeholder="Жубайы">
+        </div>
+        <div class="col">
+          <input class="form-control" id="id_children" name="children" value="{{ form.children.value }}" placeholder="Балдары">
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <button class="file-button" type="button" onclick="document.getElementById('id_photo').click()">
+            Сүрөт жүктө
+          </button>
+          <input id="id_photo" type="file" style="display:none" name="photo">
+        </div>
+        <div class="col">
+          <input class="form-control" id="id_desc_of_photo" name="desc_of_photo" value="{{ form.desc_of_photo.value }}" placeholder="Сүрөттүн ачыктамасы">
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <input class="form-control" id="id_desc_of_file" name="desc_of_file" value="{{ form.desc_of_file.value }}" placeholder="Файлдын ачыктамасы">
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <textarea class="content-area" id="id_content" name="content" placeholder="Кененирээк маалымат">{{ form.content.value }}</textarea>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <input class="button" value="Сакта" type="submit">
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+  crossorigin="anonymous"></script>
+{% endblock %}
