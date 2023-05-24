@@ -1,20 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Edit History for {{ victim.first_name }} {{ victim.last_name }}</h1>
-
+<div class="container">
+  <h3 style="margin-left: 4vh;">History</h3>
   {% if editing_history %}
+  <div class="container d-flex flex-column mb-5" style="min-height: 40vh;">
     <ul>
       {% for history in editing_history %}
-        <li>
-          <strong>Edited By:</strong> {{ history.edited_by }}<br>
-          <strong>Date of Editing:</strong> {{ date_of_edit }}<br>
-          <strong>Letters Edited:</strong> {{ history.letters_edited }}<br>
-
-        </li>
+      <li>
+        <strong>Edited By:</strong> {{ history.edited_by }}<br>
+        <strong>Date of Editing:</strong> {{ date_of_edit }}<br>
+        <strong>Letters Edited:</strong> {{ history.letters_edited }}<br>
+      </li>
       {% endfor %}
     </ul>
+  </div>
   {% else %}
-    <p>No editing history available for this person.</p>
+  <div class="d-flex flex-column justify-content-center align-items-center" style="margin: 20vh;">
+    <h2 style="color: #5D5D5D; opacity: 0.6">Эчким тарабынан озгортулбогон</h2>
+    <p style="color: #5D5D5D; opacity: 0.6">Озгортуу киргизууну кааласаныз<a style='color: #3D3D3D; font-weight: bold' href="http://127.0.0.1:8000/person/">оздук баракчага</a> өтүңүз</p>
+  </div>
   {% endif %}
+</div>
 {% endblock %}
