@@ -92,12 +92,14 @@ def edit_history(request, person_id):
         12: 'Бештин айы'
     }
 
-    date_of_edit = "{day}-{month}, {year}-жыл".format(
-        day = editing_history.date_of_editing.day,
-        month = month_names_kyrgyz[editing_history.date_of_editing.month],
-        year = editing_history.date_of_editing.year
-    )
-
+    date_of_edit = ''
+    for history in editing_history:
+        date = "{day}-{month}, {year}-жыл".format(
+            day=history.date_of_editing.day,
+            month=month_names_kyrgyz[history.date_of_editing.month],
+            year=history.date_of_editing.year
+        )
+        date_of_edit += date
 
     context = {
         'victim': victim,
